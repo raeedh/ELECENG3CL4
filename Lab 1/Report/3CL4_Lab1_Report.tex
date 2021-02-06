@@ -31,7 +31,7 @@ The software used for our simulation environment consisted of Microsoft Windows 
 % don't worry about the figure placement, it'll probably fix itself once you add more text or i'll fix it later
 
 \subsection*{vii/viii} % base settings
-Base settings, proportional gain is 1, no derivative gain
+Base settings, proportional gain is 1, no derivative gain. The servo angle did not quite reach 45 degrees and there was a small overshoot every time the disk turned. The motor voltage did not peak much and did not exceed 2V.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
@@ -46,7 +46,7 @@ Base settings, proportional gain is 1, no derivative gain
 \end{figure}
 
 \subsection*{ix} % increase proportional gain 1 -> 2
-Increase proportional gain to 2
+Increase proportional gain to 2. There was a much greater overshoot now and 1 more oscillation around the goal, but the disk settled much closer to the desired 45 degree angle. The motor voltage spiked to about 3V now, as a result of it being driven harder by the bigger proportional gain.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
@@ -61,7 +61,7 @@ Increase proportional gain to 2
 \end{figure}
 
 \subsection*{x} % increase proportional gain 2 -> 4
-Increase proportional gain to 4
+Increase proportional gain to 4. There was even greater overshoot and 4 oscillations around the goal, plus the time it took the disk to settle was much longer. The motor voltage spiked all the way up to 6V.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
@@ -76,7 +76,7 @@ Increase proportional gain to 4
 \end{figure}
 
 \subsection*{xi} % increase derivative gain 0 -> 0.1
-Increased derivative gain to 0.1
+Increased derivative gain to 0.1. The motion of the disk was much, much smoother with only a little overshoot and no oscillations. The motor voltage still peaked at 6V but the subsequent peak was much smaller at 2V, and it settled much quicker.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
@@ -91,7 +91,7 @@ Increased derivative gain to 0.1
 \end{figure}
 
 \subsection*{xii} % increase derivative gain 0.1 -> 0.15
-Increase derivative gain to 0.15
+Increase derivative gain to 0.15. The motion of the disk was really smooth and snappy, hitting the desired angle with even less of an overshoot compared to the previous settings. The motor voltage peak was slightly higher but the subsequent peak was smaller, at around 1.6V now, further confirming our observation of a smaller overshoot and correction.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
