@@ -48,7 +48,7 @@ The initial exercise had the proportional gain set to 1 and the derivative gain 
 \end{figure}
 
 \subsection*{Investigating the Effects of Increasing Proportional Gain} % increase proportional gain 1 -> 2, ix
-In the following familiarization exercise, the proportional gain is increased to 2. We observe even greater overshoot, with more oscillations before the motor voltage and servo angle settle. The motor voltage spikes to to approximately 3 V now, as a result of it being driven harder by the bigger proportional gain, but requires longer to settle down to 0 V. Figure~\ref{fig:ix_volt} shows a plot of the motor voltage. Similarly, the servo angle jumps to almost 100 degrees this time, before requiring a longer amount of time to settle to 45 degrees. However, the servo angle does eventually settle down to 45 degrees. Figure~\ref{fig:ix_angle} shows a plot of the servo angle.
+In the following familiarization exercise, the proportional gain is set to 2. We observe even greater overshoot, with more oscillations before the motor voltage and servo angle settle. The motor voltage spikes to approximately 3 V now, as a result of it being driven harder by the bigger proportional gain, but requires longer to settle down to 0 V. Figure~\ref{fig:ix_volt} shows a plot of the motor voltage. Similarly, the servo angle jumps to almost 100 degrees this time, before requiring a longer amount of time to settle to 45 degrees. However, the servo angle does eventually settle down to 45 degrees. Figure~\ref{fig:ix_angle} shows a plot of the servo angle.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
@@ -63,7 +63,7 @@ In the following familiarization exercise, the proportional gain is increased to
 \end{figure}
 
 % \subsection*{x} % increase proportional gain 2 -> 4, x
-Increasing the proportional gain further to 4 caused even greater overshoot, and even more oscillations as the settling time increased significantly. The motor voltage spikes all the way up to 6 V and oscillates for the entire period. The motor is driven in the other direction before it even has a chance to settle. Figure~\ref{fig:x_volt} shows a plot of the motor voltage. Similarly, the servo angle overshoots the targeted angle even farther, and does not even have enough time to settle at 45 degrees before it is driven the other way. Figure~\ref{fig:x_angle} shows a plot of the servo angle.
+Increasing the proportional gain further to 4 causes even greater overshoot, and even more oscillations as the settling time increases significantly. The motor voltage spikes all the way up to 6 V and oscillates for the entire period. The motor is driven in the other direction before it even has a chance to settle. Figure~\ref{fig:x_volt} shows a plot of the motor voltage. Similarly, the servo angle overshoots the targeted angle even farther, and does not even have enough time to settle at 45 degrees before it is driven the other way. Figure~\ref{fig:x_angle} shows a plot of the servo angle.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
@@ -78,7 +78,7 @@ Increasing the proportional gain further to 4 caused even greater overshoot, and
 \end{figure}
 
 \subsection*{Introducing Derivative Gain} % increase derivative gain 0 -> 0.1, xi
-In the next familiarization exercise, we add a derivative gain by increasing it from 0 to 0.15 while keeping the proportional gain at 4. The motion of the disk was much smoother with little overshoot and a very short period of oscillations. The motor voltage still peaked at around 6 V but the subsequent peak was much smaller at 2 V, with oscillations stopping very quickly and the motor remaining settled for the majority of the period. Figure~\ref{fig:xi_volt} shows a plot of the motor voltage. The servo angle only shoots a bit over the desired angle, but settles down near the desired angle very quickly. The angle remains slightly 45 degrees for most of the period. Figure~\ref{fig:xi_angle} shows a plot of the servo angle.
+In the next familiarization exercise, we add a derivative gain by increasing it from 0 to 0.15 while keeping the proportional gain at 4. The motion of the disk is much smoother with little overshoot and a very short period of oscillations. The motor voltage still peaks at around 6 V but the subsequent peak was much smaller at 2 V, with oscillations stopping very quickly and the motor remaining settled for the majority of the period. Figure~\ref{fig:xi_volt} shows a plot of the motor voltage. The servo angle only shoots a bit over the desired angle, but settles down near the desired angle very quickly. The angle remains slightly under 45 degrees for most of the period. Figure~\ref{fig:xi_angle} shows a plot of the servo angle.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
@@ -93,7 +93,7 @@ In the next familiarization exercise, we add a derivative gain by increasing it 
 \end{figure}
 
 \subsection*{Investigating the Effects of Increasing Derivative Gain} % increase derivative gain 0.1 -> 0.15, xii
-Increasing the derivative gain further to 0.15 cause the motion to be even smoother. The desired angle was hit with even less overshoot than previously, with a much shorter settling time. The motor voltage peak was slightly higher but the subsequent peak was smaller, with the duration of the peaks appearing to be slightly tighter, causing an even shorter settling time. Figure~\ref{fig:xii_volt} shows a plot of the motor voltage. The servo angle only shoots a bit over the desired angle, but settles down near the desired angle very quickly and arrives at 45 degrees much quicker than previously. Figure~\ref{fig:xii_angle} shows a plot of the servo angle.
+Increasing the derivative gain further to 0.15 causes the motion to be even smoother. The durations of the peaks in the motor voltage are even tighter than before. Figure~\ref{fig:xii_volt} shows a plot of the motor voltage. The servo angle arrives at 45 degrees much quicker than previously. Figure~\ref{fig:xii_angle} shows a plot of the servo angle. We can observe that increasing the derivative gain decreases the overshoot and requires less correction.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
