@@ -22,7 +22,9 @@
 \maketitle
 \clearpage
 
-% stuff goes here
+\section*{Member Contributions}
+Both group members contributed an even amount to both the exercises and the report. Both members went through the exercises together and contributed to all sections of the report.
+
 \section*{Simulation Environment}
 The software used for our simulation environment consisted of Microsoft Windows 10 Education (Version 20H2, OS Build 19042.746), MATLAB R2020b Update 3, and Quanser Interactive Labs Version 2.9. This software was run on a Dell laptop with an Intel Core i7-8550U processor, 8GB of DDR4-2400MHz RAM, Intel UHD Graphics 620 (integrated), and a 256GB SSD.
 
@@ -30,79 +32,79 @@ The software used for our simulation environment consisted of Microsoft Windows 
 % name them subsection_voltage and subsection_angle (eg vii_voltage/vii_angle)
 % don't worry about the figure placement, it'll probably fix itself once you add more text or i'll fix it later
 
-\subsection*{vii/viii} % base settings
-Base settings, proportional gain is 1, no derivative gain. The servo angle did not quite reach 45 degrees and there was a small overshoot every time the disk turned. The motor voltage did not peak much and did not exceed 2V.
+\subsection*{Initial setup} % base settings, vii/viii
+The initial exercise had the proportional gain set to 1 and the derivative gain set to 0. The motor voltage quickly increased to just under 2 V and quickly shot back down, but required some time to settle back to 0 V. Figure~\ref{fig:vii_volt} shows a plot of the motor voltage. The servo angle shoots past the 45 degrees to almost 80 degrees, before beginning to settle towards 45 degrees. The servo angle settles a bit under the targeted 45 degrees. Figure~\ref{fig:vii_angle} shows a plot of the servo angle.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \includegraphics[width=\textwidth]{vii_voltage}    
-        \caption{Motor Voltage}    
+        \caption{\label{fig:vii_volt}Motor Voltage}    
     \end{subfigure}
     \begin{subfigure}[b]{0.49\textwidth}
         \includegraphics[width=\textwidth]{vii_angle}
-        \caption{Servo Angle}
+        \caption{\label{fig:vii_angle}Servo Angle}
     \end{subfigure}
-    \caption{\label{fig:vii} Proportional gain: 1, Derivative gain = 0}
+    \caption{\label{fig:vii}Proportional gain: 1, Derivative gain = 0}
 \end{figure}
 
-\subsection*{ix} % increase proportional gain 1 -> 2
-Increase proportional gain to 2. There was a much greater overshoot now and 1 more oscillation around the goal, but the disk settled much closer to the desired 45 degree angle. The motor voltage spiked to about 3V now, as a result of it being driven harder by the bigger proportional gain.
+\subsection*{Investigating the Effects of Increasing Proportional Gain} % increase proportional gain 1 -> 2, ix
+In the following familiarization exercise, the proportional gain is increased to 2. We observe even greater overshoot, with more oscillations before the motor voltage and servo angle settle. The motor voltage spikes to to approximately 3 V now, as a result of it being driven harder by the bigger proportional gain, but requires longer to settle down to 0 V. Figure~\ref{fig:ix_volt} shows a plot of the motor voltage. Similarly, the servo angle jumps to almost 100 degrees this time, before requiring a longer amount of time to settle to 45 degrees. However, the servo angle does eventually settle down to 45 degrees. Figure~\ref{fig:ix_angle} shows a plot of the servo angle.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \includegraphics[width=\textwidth]{ix_voltage}
-        \caption{Motor Voltage}
+        \caption{\label{fig:ix_volt}Motor Voltage}
     \end{subfigure}
     \begin{subfigure}[b]{0.49\textwidth}
         \includegraphics[width=\textwidth]{ix_angle}
-        \caption{Servo Angle}
+        \caption{\label{fig:ix_angle}Servo Angle}
     \end{subfigure}
     \caption{\label{fig:ix} Proportional gain: 2, Derivative gain = 0}
 \end{figure}
 
-\subsection*{x} % increase proportional gain 2 -> 4
-Increase proportional gain to 4. There was even greater overshoot and 4 oscillations around the goal, plus the time it took the disk to settle was much longer. The motor voltage spiked all the way up to 6V.
+% \subsection*{x} % increase proportional gain 2 -> 4, x
+Increasing the proportional gain further to 4 caused even greater overshoot, and even more oscillations as the settling time increased significantly. The motor voltage spikes all the way up to 6 V and oscillates for the entire period. The motor is driven in the other direction before it even has a chance to settle. Figure~\ref{fig:x_volt} shows a plot of the motor voltage. Similarly, the servo angle overshoots the targeted angle even farther, and does not even have enough time to settle at 45 degrees before it is driven the other way. Figure~\ref{fig:x_angle} shows a plot of the servo angle.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \includegraphics[width=\textwidth]{x_voltage}
-        \caption{Motor Voltage}
+        \caption{\label{fig:x_volt}Motor Voltage}
     \end{subfigure}
     \begin{subfigure}[b]{0.49\textwidth}
         \includegraphics[width=\textwidth]{x_angle}
-        \caption{Servo Angle}
+        \caption{\label{fig:x_angle}Servo Angle}
     \end{subfigure}
     \caption{\label{fig:x} Proportional gain: 4, Derivative gain = 0}
 \end{figure}
 
-\subsection*{xi} % increase derivative gain 0 -> 0.1
-Increased derivative gain to 0.1. The motion of the disk was much, much smoother with only a little overshoot and no oscillations. The motor voltage still peaked at 6V but the subsequent peak was much smaller at 2V, and it settled much quicker.
+\subsection*{Introducing Derivative Gain} % increase derivative gain 0 -> 0.1, xi
+In the next familiarization exercise, we add a derivative gain by increasing it from 0 to 0.15 while keeping the proportional gain at 4. The motion of the disk was much smoother with little overshoot and a very short period of oscillations. The motor voltage still peaked at around 6 V but the subsequent peak was much smaller at 2 V, with oscillations stopping very quickly and the motor remaining settled for the majority of the period. Figure~\ref{fig:xi_volt} shows a plot of the motor voltage. The servo angle only shoots a bit over the desired angle, but settles down near the desired angle very quickly. The angle remains slightly 45 degrees for most of the period. Figure~\ref{fig:xi_angle} shows a plot of the servo angle.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \includegraphics[width=\textwidth]{xi_voltage}
-        \caption{Motor Voltage}
+        \caption{\label{fig:xi_volt}Motor Voltage}
     \end{subfigure}
     \begin{subfigure}[b]{0.49\textwidth}
         \includegraphics[width=\textwidth]{xi_angle}
-        \caption{Servo Angle}        
+        \caption{\label{fig:xi_angle}Servo Angle}    
     \end{subfigure}
     \caption{\label{fig:xi} Proportional gain: 4, Derivative gain = 0.1}
 \end{figure}
 
-\subsection*{xii} % increase derivative gain 0.1 -> 0.15
-Increase derivative gain to 0.15. The motion of the disk was really smooth and snappy, hitting the desired angle with even less of an overshoot compared to the previous settings. The motor voltage peak was slightly higher but the subsequent peak was smaller, at around 1.6V now, further confirming our observation of a smaller overshoot and correction.
+\subsection*{Investigating the Effects of Increasing Derivative Gain} % increase derivative gain 0.1 -> 0.15, xii
+Increasing the derivative gain further to 0.15 cause the motion to be even smoother. The desired angle was hit with even less overshoot than previously, with a much shorter settling time. The motor voltage peak was slightly higher but the subsequent peak was smaller, with the duration of the peaks appearing to be slightly tighter, causing an even shorter settling time. Figure~\ref{fig:xii_volt} shows a plot of the motor voltage. The servo angle only shoots a bit over the desired angle, but settles down near the desired angle very quickly and arrives at 45 degrees much quicker than previously. Figure~\ref{fig:xii_angle} shows a plot of the servo angle.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \includegraphics[width=\textwidth]{xii_voltage}
-        \caption{Motor Voltage}     
+        \caption{\label{fig:xii_volt}Motor Voltage}     
     \end{subfigure}
     \begin{subfigure}[b]{0.49\textwidth}
         \includegraphics[width=\textwidth]{xii_angle}
-        \caption{Servo Angle}
+        \caption{\label{fig:xii_angle}Servo Angle} 
     \end{subfigure}
     \caption{\label{fig:xii} Proportional gain: 4, Derivative gain = 0.15}
+    \vspace{128in} % added to push figure to top of page
 \end{figure}
-
 \end{document}
