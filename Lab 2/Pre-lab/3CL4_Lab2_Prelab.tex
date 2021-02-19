@@ -117,19 +117,47 @@ From the equation for P.O., you can calculate $\zeta$ as:
     %\zeta^2 &= (1 - \zeta^2) \frac{\left( \ln \left( \frac{P.O.}{100} \right) \right)^2}{\pi^2}
 \end{aligned}
 \end{equation}
-ok elts try something thats probably a bit easier
+ok lets try something thats probably a bit easier
 \begin{equation}
 \begin{aligned}[b]
     T_p &= \frac{\pi}{\omega_n\sqrt{1-\zeta^2}} \\
-    \omega_n &= \frac{\pi}{T_pi\sqrt{1-\zeta^2}} % u substitute ur answer for zeta in here
+    \omega_n &= \frac{\pi}{T_p\sqrt{1-\zeta^2}} % u substitute ur answer for zeta in here
 \end{aligned}
 \end{equation}
 
 \subsection{Closed-Loop System Identification using the Frequency Response}
 \textbf{Pre-lab Question 8} \\
+\begin{equation}
+\begin{aligned}[b]
+    \frac{d}{d\omega} \left|\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega\right|^2 &= \overbrace{2 (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega) \frac{d}{d\omega} (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega)}^{\text{apply chain rule}} \\
+    &= 2 (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega) (-2\omega + j2\zeta\omega_n) \\
+    0 &= 4 (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega) (-\omega + j\zeta\omega_n) \\
+    0 &= (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega) (-\omega + j\zeta\omega_n) \\
+    &= (\omega_n^2 - (\omega_n\sqrt{1-2\zeta^2})^2 + j2\zeta\omega_n\sqrt{1-2\zeta^2}) (-\sqrt{1-2\zeta^2} + j\zeta\omega_n)
+    &= 
+\end{aligned}
+\end{equation}
 
 \textbf{Pre-lab Question 9} \\
+\begin{equation} \label{eq:9}
+\begin{aligned}[b]
+    M_p^2 &= \underset{\omega}{\text{max}}\left| T(j\omega) \right|^2 \\
+    &= \left| T(j\omega_p) \right|^2 \\
+    &= \frac{\omega_n^4}{\left| \omega_n^2 - (\omega_n\sqrt{1-2\zeta^2})^2 + j2\zeta\omega_n^2\sqrt{1-2\zeta^2} \right|^2} \\
+    &= \frac{\omega_n^4}{\left| \omega_n^2 - \omega_n^2(1-2\zeta^2) + j2\zeta\omega_n^2\sqrt{1-2\zeta^2} \right|^2} \\
+    &= \frac{\omega_n^4}{\left| \omega_n^2 \left( j2\zeta\sqrt{1-2\zeta^2} + 2\zeta^2 \right) \right|^2} \\
+    &= \frac{\omega_n^4}{\omega_n^4 (4\zeta^4 + 4\zeta^2 (1-2\zeta^2))} \\
+    &= \frac{1}{4\zeta^2 (\zeta^2 + 1 - 2\zeta^2)} \\
+    &= \frac{1}{4\zeta^2 (1 - \zeta^2)}
+\end{aligned}
+\end{equation}
 
 \textbf{Pre-lab Question 10} \\
+\begin{equation}
+\begin{aligned}[b]
+    M_p^2 &= \frac{1}{4\zeta^2 (1 - \zeta^2)} \\
+    4\zeta^2 (1 - \zeta^2) &= \frac{1}{M_p^2} \\
+\end{aligned}
+\end{equation}
 
 \end{document}
