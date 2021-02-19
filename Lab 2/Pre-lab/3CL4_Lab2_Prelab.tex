@@ -96,32 +96,33 @@ By substituting Equation~\ref{eq:tau_m} into the equation for $\omega_n$, we can
 
 \subsection{Closed-loop System Identification from the Step Response}
 \textbf{Pre-lab Question 5} \\
-The percent overshoot is determined at the peak time, $T_p$, of the step response. For the provided step response, this peak time occurs the first time $d\theta_{\text{step}}(t)/dt = 0$, which occurs when $\omega_n\sqrt{1-\zeta^2}t = \pi$. Therefore, the peak time $T_p$ is equal to $\frac{\pi}{\omega_n\sqrt{1-\zeta^2}}$. At the peak time, the peak value of the step response is $1 + \exp\left( -\zeta\pi / \sqrt{1-\zeta^2} \right)$. Therefore, the percent overshoot can be defined as P.O. $= 100\frac{(1 + \exp^{-(\zeta\pi / \sqrt{1-\zeta^2})})-1}{1} = 100\exp\left(\frac{-\zeta\pi}{\sqrt{1-\zeta^2}}\right)$.
-
+The percent overshoot is determined at the peak time, $T_p$, of the step response. For the provided step response, this peak time occurs the first time $d\theta_{\text{step}}(t)/dt = 0$, which occurs when $\omega_n\sqrt{1-\zeta^2}t = \pi$. Therefore, the peak time $T_p$ is equal to $\frac{\pi}{\omega_n\sqrt{1-\zeta^2}}$. At the peak time, the peak value of the step response is $1 + \exp\left( -\zeta\pi / \sqrt{1-\zeta^2} \right)$. Therefore, the percent overshoot can be defined as: 
+\begin{equation}
+    \text{P.O.} = 100\frac{(1 + \exp^{-(\zeta\pi / \sqrt{1-\zeta^2})})-1}{1} = 100\exp\left(\frac{-\zeta\pi}{\sqrt{1-\zeta^2}}\right)
+\end{equation}
 \textbf{Pre-lab Question 6} \\
 As discussed in the solution to Pre-lab Question 5, the peak time occurs the first time $d\theta_{\text{step}}(t)/dt = 0$, which occurs when $\omega_n\sqrt{1-\zeta^2}t = \pi$. Therefore, the peak time $T_p$ is equal to $\frac{\pi}{\omega_n\sqrt{1-\zeta^2}}$.
 
 \textbf{Pre-lab Question 7} \\
-From the equation for P.O., you can calculate $\zeta$ as:
-\begin{equation}
+Using the equation for percent overshoot derived in Pre-lab Question 5, you can calculate $\zeta$ as:
+\begin{equation} \label{eq:7zeta}
 \begin{aligned}[b]
     P.O. &= 100\exp\left(\frac{-\zeta\pi}{\sqrt{1-\zeta^2}}\right) \\
     \frac{P.O.}{100} &= \exp\left(\frac{-\zeta\pi}{\sqrt{1-\zeta^2}}\right) \\
     \ln \left( \frac{P.O.}{100} \right) &= \frac{-\zeta\pi}{\sqrt{1-\zeta^2}} \\
-    \frac{\left( \ln \left( \frac{P.O.}{100} \right) \right)^2}{\pi^2} &= \frac{\zeta^2}{1-\zeta^2} \\
-    \frac{\left( \ln \left( \frac{P.O.}{100} \right) \right)^2}{\pi^2} &= 1 - \frac{1}{1+\zeta^2} \\
-    1 - \frac{\left( \ln \left( \frac{P.O.}{100} \right) \right)^2}{\pi^2} &= \frac{1}{1+\zeta^2} \\
-    1 + \zeta^2 &= \frac{1}{\left( 1 - \frac{\left( \ln \left( \frac{P.O.}{100} \right) \right)^2}{\pi^2} \right)} \\
-    \zeta^2 &= \frac{1}{\left( 1 - \frac{\left( \ln \left( \frac{P.O.}{100} \right) \right)^2}{\pi^2} \right)} - 1 \\
-    \zeta &= \sqrt{\frac{1}{\left( 1 - \frac{\left( \ln \left( \frac{P.O.}{100} \right) \right)^2}{\pi^2} \right)} - 1}
-    %\zeta^2 &= (1 - \zeta^2) \frac{\left( \ln \left( \frac{P.O.}{100} \right) \right)^2}{\pi^2}
+    \ln^2 \left( \frac{P.O.}{100} \right) &= \frac{\zeta^2\pi^2}{1-\zeta^2} \\
+    \ln^2 \left( \frac{P.O.}{100} \right) - \zeta^2 \ln^2 \left( \frac{P.O.}{100} \right) &= \zeta^2\pi^2 \\
+    \ln^2 \left( \frac{P.O.}{100} \right) &= \zeta^2\pi^2 + \zeta^2 \ln^2 \left( \frac{P.O.}{100} \right) \\
+    \ln^2 \left( \frac{P.O.}{100} \right) &= \zeta^2 \left( \pi^2 + \ln^2 \left( \frac{P.O.}{100} \right) \right) \\
+    \zeta &= \frac{\ln \left( \frac{P.O.}{100} \right)}{\sqrt{\pi^2 + \ln^2 \left( \frac{P.O.}{100} \right)}}
 \end{aligned}
 \end{equation}
-ok lets try something thats probably a bit easier
-\begin{equation}
+We can use the equation relating peak time $T_p$ with $\omega_n$ and $\zeta$ to solve for $\omega_n$, substituting $\zeta$ with Equation~\ref{eq:7zeta}. 
+\begin{equation} \label{eq:7omegan}
 \begin{aligned}[b]
     T_p &= \frac{\pi}{\omega_n\sqrt{1-\zeta^2}} \\
-    \omega_n &= \frac{\pi}{T_p\sqrt{1-\zeta^2}} % u substitute ur answer for zeta in here
+    \omega_n &= \frac{\pi}{T_p\sqrt{1-\zeta^2}} \\
+    \omega_n &= \frac{\pi}{T_p\sqrt{1 - \frac{\ln^2 \left( \frac{P.O.}{100} \right)}{\pi^2 + \ln^2 \left( \frac{P.O.}{100} \right)}}}
 \end{aligned}
 \end{equation}
 
@@ -134,11 +135,11 @@ ok lets try something thats probably a bit easier
     0 &= 4 (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega) (-\omega + j\zeta\omega_n) \\
     0 &= (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega) (-\omega + j\zeta\omega_n) \\
     &= (\omega_n^2 - (\omega_n\sqrt{1-2\zeta^2})^2 + j2\zeta\omega_n\sqrt{1-2\zeta^2}) (-\sqrt{1-2\zeta^2} + j\zeta\omega_n)
-    &= 
 \end{aligned}
 \end{equation}
 
 \textbf{Pre-lab Question 9} \\
+The value of the peak is derived below in Equation~\ref{eq:9}.
 \begin{equation} \label{eq:9}
 \begin{aligned}[b]
     M_p^2 &= \underset{\omega}{\text{max}}\left| T(j\omega) \right|^2 \\
@@ -153,10 +154,22 @@ ok lets try something thats probably a bit easier
 \end{equation}
 
 \textbf{Pre-lab Question 10} \\
-\begin{equation}
+We can use the expression relating $M_p$ to $\zeta$ to derive $\zeta$.
+\begin{equation} \label{eq:10zeta}
 \begin{aligned}[b]
     M_p^2 &= \frac{1}{4\zeta^2 (1 - \zeta^2)} \\
-    4\zeta^2 (1 - \zeta^2) &= \frac{1}{M_p^2} \\
+    4\zeta^2 M_p^2 - 4\zeta^4 M_p^2 - 1 &= 0 \\
+    \overbrace{-4 M_p^2 u^2 + 4 M_p^2 u - 1}^{u^2 = \zeta^4, \ u = \zeta^2} &= 0 \\
+    u &= \frac{-4 M_p^2 \pm \sqrt{16 M_p^4 - 16 M_p^2}}{-8 M_p^2} \\
+    \zeta &= \sqrt{\frac{-4 M_p^2 \pm \sqrt{16 M_p^4 - 16 M_p^2}}{-8 M_p^2}} \\
+\end{aligned}
+\end{equation}
+We can use the expression relating $\omega_p$ to $\omega_n$ and $\zeta$ to derive $\omega_n$, after substituting Equation~\ref{eq:10zeta} for $\zeta$.
+\begin{equation}
+\begin{aligned}[b]
+    \omega_p &= \omega_n \sqrt{1 - 2\zeta^2} \\
+    \omega_n &= \frac{\omega_p}{\sqrt{1 - 2\zeta^2}} \\
+    \omega_n &= \frac{\omega_p}{\sqrt{1 - 2 \left( \frac{-4 M_p^2 \pm \sqrt{16 M_p^4 - 16 M_p^2}}{-8 M_p^2} \right)}}
 \end{aligned}
 \end{equation}
 
