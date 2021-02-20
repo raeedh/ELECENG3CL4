@@ -130,13 +130,25 @@ We can use the equation relating peak time $T_p$ with $\omega_n$ and $\zeta$ to 
 \textbf{Pre-lab Question 8} \\
 \begin{equation}
 \begin{aligned}[b]
-    \frac{d}{d\omega} \left|\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega\right|^2 &= \overbrace{2 (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega) \frac{d}{d\omega} (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega)}^{\text{apply chain rule}} \\
-    &= 2 (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega) (-2\omega + j2\zeta\omega_n) \\
-    0 &= 4 (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega) (-\omega + j\zeta\omega_n) \\
-    0 &= (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega) (-\omega + j\zeta\omega_n) \\
-    &= (\omega_n^2 - (\omega_n\sqrt{1-2\zeta^2})^2 + j2\zeta\omega_n\sqrt{1-2\zeta^2}) (-\sqrt{1-2\zeta^2} + j\zeta\omega_n)
+    \frac{d}{d\omega} \left( \left|\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega \right|^2 \right) &= \frac{d}{d\omega} \left( (\omega_n^2 - \omega^2)^2 + (2 \zeta \omega_n \omega)^2 \right) \\
+    &= \frac{d}{d\omega} \left( \omega_n^4 - 2\omega_n^2\omega^2 + \omega^4 + 4\zeta^2\omega_n^2\omega^2 \right) \\
+    0 &= 4\omega^3 - 4\omega_n^2\omega + 8\zeta^2\omega_n^2\omega \\
+    0 &= \omega \left( 4\omega^2 - 4\omega_n^2 + 8\zeta^2\omega_n^2 \right) \\
+    4\omega^2 &= 4\omega_n^2 - 8\zeta^2\omega_n^2 \\
+    \omega^2 &= \omega_n^2 \left( 1 - 2\zeta^2 \right) \\
+    \omega &= \omega_n \sqrt{1 - 2\zeta^2}
 \end{aligned}
 \end{equation}
+
+% \begin{equation}
+% \begin{aligned}[b]
+%     \frac{d}{d\omega} \left|\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega\right|^2 &= \overbrace{2 (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega) \frac{d}{d\omega} (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega)}^{\text{apply chain rule}} \\
+%     &= 2 (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega) (-2\omega + j2\zeta\omega_n) \\
+%     0 &= 4 (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega) (-\omega + j\zeta\omega_n) \\
+%     0 &= (\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega) (-\omega + j\zeta\omega_n) \\
+%     &= (\omega_n^2 - (\omega_n\sqrt{1-2\zeta^2})^2 + j2\zeta\omega_n\sqrt{1-2\zeta^2}) (-\omega_n\sqrt{1-2\zeta^2} + j\zeta\omega_n)
+% \end{aligned}
+% \end{equation}
 
 \textbf{Pre-lab Question 9} \\
 The value of the peak is derived below in Equation~\ref{eq:9}.
