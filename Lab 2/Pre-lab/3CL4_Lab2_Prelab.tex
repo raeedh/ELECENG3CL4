@@ -131,7 +131,7 @@ By substituting Equation~\ref{eq:7zeta} into the expression relating $T_p$ to $\
 
 \subsection{Closed-Loop System Identification using the Frequency Response}
 \textbf{Pre-lab Question 8} \\
-In Equation~\ref{eq:8}, we differentiate the denominator with respect to $\omega$, set the derivative equal to zero, then determine the value for $\omega = \omega_p$ for which $\left| T(j\omega) \right|^2$ reaches a maximum.
+In Equation~\ref{eq:8}, we differentiate the denominator with respect to $\omega$, set the derivative equal to zero, then determine the value for $\omega = \omega_p$ for which $\left| T(j\omega) \right|^2$ reaches a maximum. As $\omega_p$ has to be a real number, $\zeta$ must be $\leq 1/\sqrt{2}$.
 \begin{equation} \label{eq:8}
 \begin{aligned}[b]
     \frac{d}{d\omega} \left( \left|\omega_n^2 - \omega^2 + j2\zeta\omega_n\omega \right|^2 \right) &= \frac{d}{d\omega} \left( (\omega_n^2 - \omega^2)^2 + (2 \zeta \omega_n \omega)^2 \right) \\
@@ -159,7 +159,6 @@ The value of the peak is derived in Equation~\ref{eq:9}.
 \end{aligned}
 \end{equation}
 
-\clearpage
 \textbf{Pre-lab Question 10} \\
 When given $M_p$, we can derive Equation~\ref{eq:10zeta} for $\zeta$ by using the expression relating $M_p$ to $\zeta$.
 \begin{equation} \label{eq:10zeta}
