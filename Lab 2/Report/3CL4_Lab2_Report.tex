@@ -38,7 +38,7 @@ The objective of this lab was to identify the plant model of a marginally-stable
 With a default proportional gain of 1, we observed some small non-linear effects when the servo motor slows down, where the servo angle plot went from a curve to a line at the end of the movements. This is visible in the graph shown below.
 %SHOW THE GRAPH HERE OF K = 1
 % iv) K = 2
-When we increased the proportional gain to 2, we observed that the small non-linear effects shown above were greatly reduced. Consequently, the overshoot of the servo motor increased as a result of the P-gain increase.
+When we increased the proportional gain to 2, we observed that the small non-linear effects shown above were greatly reduced. Consequently, the overshoot of the servo motor increased as a result of the P-gain increase. The motor voltage and servo angle plots can be seen in Figure~\ref{fig:exp1}.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{exp1}
@@ -77,64 +77,63 @@ We can determine the motor parameters $A$ and $\tau_m$ by using the equations de
 
 The values of $A$ and $\tau_m$ were determined to be 25.877 and 0.133 in Equation~\ref{fig:exp1calc}.
 
-\clearpage
 \subsection{Experiment 2: Frequency Domain Identification}
 % i) verify that the choice of K = 2 gives a value of zeta that leads to a reasonable peak in Fig 3.
-To verify that the choice of K = 2 lead to a reasonable peak shown in Figure 3 of the lab document, we calculated that our $\zeta$ was 0.191, and from Figure 3 we observed that it gave us a peak of approximately 8 dB, which is large enough that we could easily identify the peak.
+To verify that the choice of K = 2 lead to a reasonable peak shown in Figure 3 of the lab document, we calculated that our $\zeta$ was 0.191, and from Figure 3 in the lab document we observed that it gave us a peak of approximately 8 dB, which is large enough that we could easily identify the peak.
 
 % vi) observe at 0.5 hz; small delay, some non-linear effects at direction change
-Starting at 0.5 Hz, we observed essentially the same signal magnitude between the input and servo angle signals, and a small delay in the angle signal relative to the input, both of which are as expected from the magnitude and phase response in the bode plot (Figure 3 in the lab document). There were also some small non-linearities at the tips of the angle signal, where the motor changed direction, which meant that the output (shown below) was not quite sinusoidal.
+Starting at 0.5 Hz, we observed essentially the same signal magnitude between the input and servo angle signals, and a small delay in the angle signal relative to the input, both of which are as expected from the magnitude and phase response in the bode plot (Figure 3 in the lab document). There were also some small non-linearities at the tips of the angle signal, where the motor changed direction, which meant that the output (shown below) was not quite sinusoidal. The motor voltage and servo angle plots at 0.5 Hz can be seen in Figure~\ref{fig:exp2_0.5}.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{exp2_0.5}
+    \includegraphics[width=0.87\textwidth]{exp2_0.5}
     \caption{\label{fig:exp2_0.5}Motor Voltage and Servo Angle for 0.5 Hz Input Signal}
 \end{figure}
 
 % vii) 1 hz; slightly greater gain, slight longer delay, non-linear effects diminished
-Increasing the input frequency to 1 Hz slightly increased both the gain and delay of the system, like in the bode plot. The non-linear effects were reduced but still present.
+Increasing the input frequency to 1 Hz slightly increased both the gain and delay of the system, like in the bode plot. The non-linear effects were reduced but still present. The motor voltage and servo angle plots at 1 Hz can be seen in Figure~\ref{fig:exp2_1}.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{exp2_1}
+    \includegraphics[width=0.87\textwidth]{exp2_1}
     \caption{\label{fig:exp2_1}Motor Voltage and Servo Angle for 1 Hz Input Signal}
 \end{figure}
 
 % viii) 2 hz; gain signif greater, moderate delay, non-linear effects negligible
-At 2 Hz, the gain was much greater than 1.
+At 2 Hz, the gain was much greater than 1 and the delay was much larger as well, which is as expected as we move further right on the bode plot. The non-linear effects were completely negligible at this point. The motor voltage and servo angle plots at 2 Hz can be seen in Figure~\ref{fig:exp2_2}.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{exp2_2}
+    \includegraphics[width=0.87\textwidth]{exp2_2}
     \caption{\label{fig:exp2_2}Motor Voltage and Servo Angle for 2 Hz Input Signal}
 \end{figure}
 
 % ix) 3 hz; gain signif greater, signifc delay, non-linear effects negligible
-some observations
+At 3 Hz, the gain increased significantly as the frequency likely corresponds to the region around the peak of the bode magnitude plot. The phase delay is now significant, as the frequency enters the region of bode phase plot where there is a step decrease in the phase. The motor voltage and servo angle plots at 3 Hz can be seen in Figure~\ref{fig:exp2_3}.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{exp2_3}
+    \includegraphics[width=0.87\textwidth]{exp2_3}
     \caption{\label{fig:exp2_3}Motor Voltage and Servo Angle for 3 Hz Input Signal}
 \end{figure}
 
 % x) 4 hz; gain smaller than 3 hz, output almost completely out of phase w/ input
-some observations
+At 4 Hz, the gain decreases which matches the behaviour of the bode magnitude plot, where the magnitude peaks at a certain frequency before beginning to decrease. The output signal is also completely out of phase with the input by this point, which is around where the bode phase plot begins to plateau around -180 degrees. The motor voltage and servo angle plots at 4 Hz can be seen in Figure~\ref{fig:exp2_4}.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{exp2_4}
+    \includegraphics[width=0.87\textwidth]{exp2_4}
     \caption{\label{fig:exp2_4}Motor Voltage and Servo Angle for 4 Hz Input Signal}
 \end{figure}
 
 % xi) 5 hz; 
-some observations
+At 5 Hz, the gain decreases even further, falling below 0 dB and attenuating the output signal, putting the frequency in the region where the bode magnitude plot is decreasing at a steady rate. The phase delay is around the same as it was at 4 Hz. The motor voltage and servo angle plots at 5 Hz can be seen in Figure~\ref{fig:exp2_5}.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{exp2_5}
+    \includegraphics[width=0.87\textwidth]{exp2_5}
     \caption{\label{fig:exp2_5}Motor Voltage and Servo Angle for 5 Hz Input Signal}
 \end{figure}
 
 % xii) 6 hz;
-some observations
+At 6 Hz, the gain continues to decrease while the phase delay remains around the same, matching the behaviour that we expect from the bode plot. The motor voltage and servo angle plots at 6 Hz can be seen in Figure~\ref{fig:exp2_6}.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{exp2_6}
+    \includegraphics[width=0.87\textwidth]{exp2_6}
     \caption{\label{fig:exp2_6}Motor Voltage and Servo Angle for 6 Hz Input Signal}
 \end{figure}
 
@@ -143,6 +142,7 @@ In general, we can observe that the magnitude and phase of the output signal mat
 
 % xiii) search for freq where mag reaches peak
 To determine the frequency where the magnitude reaches its peak, we observed the change in the magnitude of the output signal using the "Peak Finder" tool as we changed the frequency. During our previous observations, the largest magnitude value occurred at 3 Hz. We determined the peak value by applying a binary search method beginning at 3 Hz, and eventually determined that the frequency where the magnitude reaches it peak value was around 3.06 Hz, where the magnitude was 139.9 degrees.
+
 
 % xiv) use measurements to calculate motor parameters
 We can use the recorded measurements to determine the value of the peak $M_p$ and the peak frequency $\omega_p$.
