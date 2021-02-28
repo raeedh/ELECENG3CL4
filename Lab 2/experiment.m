@@ -1,7 +1,7 @@
 %% Experiment 1
 
-po = 100*(69.43/45)-100;
-tp = 0.162;
+po = 100*(81.91/45)-100;
+tp = 0.104;
 
 zeta1 = -log(po/100) / sqrt(pi^2 + (log(po/100))^2);
 omegan1 = pi / (tp*sqrt(1-zeta1^2));
