@@ -3,14 +3,14 @@
 % Motor Voltage
 motor_fig = openfig('Report/Figures/.fig/exp1_motor.fig');
 motor_fig.WindowState = 'maximized';
-motor_title = title('Experiment 1: Motor Voltage');
+motor_title = title('Experiment 1 (K = 2): Motor Voltage');
 xlabel('Time (s)'); ylabel('Motor Voltage (V)');
 motor_ax = gca; motor_ax.FontSize = 20;
 
 % Servo Angle
 servo_fig = openfig('Report/Figures/.fig/exp1_servo.fig');
 servo_fig.WindowState = 'maximized';
-servo_title = title('Experiment 1: Servo Angle');
+servo_title = title('Experiment 1 (K = 2): Servo Angle');
 xlabel('Time (s)'); ylabel('Servo Angle (degrees)');
 servo_ax = gca; servo_ax.FontSize = 20;
 
@@ -26,6 +26,35 @@ close(motor_fig); close(servo_fig);
 
 combined_fig.InvertHardcopy = 'off';
 saveas(combined_fig, 'Report/Figures/exp1.png');
+close(combined_fig);
+clear
+
+% Motor Voltage
+motor_fig = openfig('Report/Figures/.fig/exp1_k1_motor.fig');
+motor_fig.WindowState = 'maximized';
+motor_title = title('Experiment 1 (K = 1): Motor Voltage');
+xlabel('Time (s)'); ylabel('Motor Voltage (V)');
+motor_ax = gca; motor_ax.FontSize = 20;
+
+% Servo Angle
+servo_fig = openfig('Report/Figures/.fig/exp1_k1_servo.fig');
+servo_fig.WindowState = 'maximized';
+servo_title = title('Experiment 1 (K = 1): Servo Angle');
+xlabel('Time (s)'); ylabel('Servo Angle (degrees)');
+servo_ax = gca; servo_ax.FontSize = 20;
+
+% Combined Figure
+combined_fig = figure;
+combined_fig.WindowState = 'maximized';
+combined_fig.Color = [0.16 0.16 0.16];
+tcl = tiledlayout(1,2);
+motor_ax.Parent = tcl; motor_ax.Layout.Tile = 1;
+servo_ax.Parent = tcl; servo_ax.Layout.Tile = 2;
+legend(servo_ax,{'Input Signal', 'Output Signal'}, 'TextColor', '#AFAFAF');
+close(motor_fig); close(servo_fig);
+
+combined_fig.InvertHardcopy = 'off';
+saveas(combined_fig, 'Report/Figures/exp1_k1.png');
 close(combined_fig);
 clear
 
