@@ -134,11 +134,17 @@ $T_s$ does not change with $k_p$. P.O. increases as $k_p$ increases and it appro
 The 2\% settling time will not change no matter what we do for $k_p$.
 
 \textbf{Pre-Lab Question 9}
+pretty sure this is the correct base equation
+\begin{align*}
+    \Theta(s) &= \frac{k_pG(s)}{1 + k_pG(s)}R(s) + \frac{G(s)}{1 + k_pG(s)}T_d(s) \\
+\end{align*}
 
 \textbf{Pre-Lab Question 10}
-
+Td(s) = 0, so ignore 2nd term of total output
+you just find the lim as s -> 0 of s * E(s). E(s) is R(s) - Y(s)
+    
 \textbf{Pre-Lab Question 11}
-
+Do the same thing as above but this time include the 2nd term of the total output response
 
 \setcounter{section}{5}
 \section{Proportional Controller with Velocity Feedback}
