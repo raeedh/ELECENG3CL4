@@ -47,7 +47,7 @@ We find the characteristic equation of the closed-loop transfer function $T(s)$ 
     0 &= s^2\tau_m + s + k_pA
 \end{aligned}
 \end{equation*}
-The closed-loop poles of the system are found by determining the poles of the characteristic equation, which is done in Equation~\ref{eq:q1}. The poles have a constant real term, and a term that is real for $k_p < \frac{1}{4A\tau_m}$ and imaginary for $k_p > \frac{1}{4A\tau_m}$. 
+The closed-loop poles of the system are found by determining the poles of the characteristic equation, which is done in Equation~\ref{eq:q1}. The poles have a constant real term, and a term that is real for $k_p \leq \frac{1}{4A\tau_m}$ and imaginary for $k_p > \frac{1}{4A\tau_m}$. 
 \begin{equation} \label{eq:q1}
 \begin{aligned}[b]
     p_{1,2} &= \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \\
@@ -114,7 +114,7 @@ We can use the expression for the closed-loop poles found previously to write th
 
 \section{Trade-offs in Proportional Control of a Servomotor: Theoretical Insight}
 \textbf{Pre-Lab Question 6} \\
-Using the provided expressions and values for $\omega_n$ and $zeta$, we can show that the closed-loop system in the Figure will have the following $T_s$, $P.O.$ and $T_{r1}$ when underdamped:
+Using the provided expressions and values for $\omega_n$ and $\zeta$, we can show that the closed-loop system in Figure 1 of the lab document will have the following $T_s$, $P.O.$ and $T_{r1}$ when underdamped:
 \begin{align*}
     T_s &\approx \frac{4}{\zeta\omega_n} \\
     &\approx \frac{4}{\frac{\omega_n}{2\omega_n\tau_m}} \\
@@ -146,16 +146,14 @@ The 2\% settling time $T_s$ cannot be controlled through $k_p$, while the percen
 
 \textbf{Pre-Lab Question 9} \\
 From the block diagram from Figure 1 in the lab document, you can determine the total output response to the reference and disturbance inputs as Equation~\ref{eq:q9}.
-\begin{equation} \label{eq:q9}
-\begin{aligned}[b]
+\begin{align*}
     \Theta(s) &= \frac{k_pG(s)}{1 + k_pG(s)}R(s) + \frac{G(s)}{1 + k_pG(s)}T_d(s) \\
     &= \frac{\frac{k_pA}{s(s\tau_m + 1)}}{1 + \frac{k_pA}{s(s\tau_m + 1)}}R(s) + \frac{\frac{A}{s(s\tau_m + 1)}}{1 + \frac{k_pA}{s(s\tau_m + 1)}}T_d(s) \\
     &= \frac{\frac{k_pA}{s(s\tau_m + 1)}}{\frac{s(s\tau_m + 1) + k_pA}{s(s\tau_m + 1)}}R(s) + \frac{\frac{A}{s(s\tau_m + 1)}}{\frac{s(s\tau_m + 1) + k_pA}{s(s\tau_m + 1)}}T_d(s) \\
     &= \frac{k_pA}{s(s\tau_m + 1) + k_pA}R(s) + \frac{A}{s(s\tau_m + 1) + k_pA}T_d(s) \\
     &= \frac{k_pA}{s^2\tau_m + s + k_pA}R(s) + \frac{A}{s^2\tau_m + s + k_pA}T_d(s) \\
-    &= \frac{\frac{k_pA}{\tau_m}}{s^2 + \frac{1}{\tau_m}s + \frac{k_pA}{\tau_m}}R(s) + \frac{\frac{A}{\tau_m}}{s^2 + \frac{1}{\tau_m}s + \frac{k_pA}{\tau_m}}T_d(s)
-\end{aligned}
-\end{equation} \newpage
+    &= \frac{\frac{k_pA}{\tau_m}}{s^2 + \frac{1}{\tau_m}s + \frac{k_pA}{\tau_m}}R(s) + \frac{\frac{A}{\tau_m}}{s^2 + \frac{1}{\tau_m}s + \frac{k_pA}{\tau_m}}T_d(s) \stepcounter{equation}\tag{\theequation}\label{eq:q9}
+\end{align*}
 
 \textbf{Pre-Lab Question 10} \\
 To find the steady-state error to a step input $R(s) = \frac{\theta_d}{s}$ in absence of disturbance, calculate the steady-state error of the reference input term using the final limit theorem in Equation~\ref{eq:q10}.
@@ -207,7 +205,7 @@ The block diagram of the proportional control of the servomotor with additional 
 \end{equation}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{q12}
+    \includegraphics[width=0.67\textwidth]{q12}
     \caption{\label{fig:q12}The block diagram transformation of the servomotor with additional velocity feedback}
 \end{figure}
 
