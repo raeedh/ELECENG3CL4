@@ -155,7 +155,7 @@ From the block diagram from Figure 1 in the lab document, you can determine the 
     &= \frac{k_pA}{s^2\tau_m + s + k_pA}R(s) + \frac{A}{s^2\tau_m + s + k_pA}T_d(s) \\
     &= \frac{\frac{k_pA}{\tau_m}}{s^2 + \frac{1}{\tau_m}s + \frac{k_pA}{\tau_m}}R(s) + \frac{\frac{A}{\tau_m}}{s^2 + \frac{1}{\tau_m}s + \frac{k_pA}{\tau_m}}T_d(s)
 \end{aligned}
-\end{equation}
+\end{equation} \newpage
 
 \textbf{Pre-Lab Question 10} \\
 To find the steady-state error to a step input $R(s) = \frac{\theta_d}{s}$ in absence of disturbance, calculate the steady-state error of the reference input term using the final limit theorem in Equation~\ref{eq:q10}.
@@ -174,8 +174,7 @@ The feedback gain $k_p$ does not have any effect on this error, because the syst
 
 \textbf{Pre-Lab Question 11} \\
 To find the steady-state error to a step input $R(s) = \frac{\theta_d}{s}$ in the presence of a constant disturbance $T_d(s) = \frac{\tau_d}{s}$, calculate the steady-state error of the reference input term using the final limit theorem in Equation~\ref{eq:q11}.
-\begin{equation} \label{eq:q11}
-\begin{aligned}[b]
+\begin{align*}
     E(s) &= R(s) - Y(s) \\
     &= R(s) - \left(\frac{k_pG(s)}{1 + k_pG(s)}R(s) + \frac{G(s)}{1 + k_pG(s)}T_d(s) \right) \\
     &= R(s) - \frac{k_pG(s)R(s) - G(s)T_d(s)}{1 + k_pG(s)} \\
@@ -190,9 +189,8 @@ To find the steady-state error to a step input $R(s) = \frac{\theta_d}{s}$ in th
     &= - \frac{A\tau_d}{k_pA + \lim_{s \to 0} \ s(s\tau_m + 1)} \\
     &= - \frac{A\tau_d}{k_pA + (\lim_{s \to 0} \ s(s\tau_m + 1) \to 0)} \\
     &= - \frac{A\tau_d}{k_pA} \\
-    &= - \frac{\tau_d}{k_p}
-\end{aligned}
-\end{equation}
+    &= - \frac{\tau_d}{k_p} \stepcounter{equation}\tag{\theequation}\label{eq:q11}
+\end{align*}
 A larger feedback gain $k_p$ makes the error smaller, and vice versa, because $k_p$ is inversely proportional to this error.
 
 \setcounter{section}{5}
@@ -209,7 +207,7 @@ The block diagram of the proportional control of the servomotor with additional 
 \end{equation}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\textwidth]{q12}
+    \includegraphics[width=\textwidth]{q12}
     \caption{\label{fig:q12}The block diagram transformation of the servomotor with additional velocity feedback}
 \end{figure}
 
@@ -247,6 +245,6 @@ We can find $\zeta$ by writing the closed-loop transfer function in the form of 
 \end{align*}
 
 \textbf{Pre-Lab Question 15} \\
-Increasing $k_p$ will decrease $\zeta$, which will lead to a decrease in the rise time and an increase in the maximum overshoot, while decreasing $k_p$ will increase the rise time and decrease the maximum overshoot. Increasing $k_v$ will increase $\zeta$, which will lead to an increase in the rise time and a decrease in the maximum overshoot, while decreasing $k_v$ will decrease the rise time and increase the maximum overshoot. The steady-state error to a constant disturbance is inversely proportional to $k_p$. % talk about settling time
+Increasing $k_p$ will decrease $\zeta$, which will lead to a decrease in the rise time and an increase in the maximum overshoot, while decreasing $k_p$ will increase the rise time and decrease the maximum overshoot. Increasing $k_v$ will increase $\zeta$, which will lead to an increase in the rise time and a decrease in the maximum overshoot, while decreasing $k_v$ will decrease the rise time and increase the maximum overshoot. The settling time is inversely proportional to $\zeta\omega_n$, which increases as $k_v$ increases and decreases as $k_v$ decreases. Therefore, the settling time increases as $k_v$ decreases and decreases as $k_v$ increases. The steady-state error to a constant disturbance is inversely proportional to $k_p$. % talk about settling time
 
 \end{document}
