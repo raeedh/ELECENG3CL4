@@ -38,7 +38,7 @@ To design a proportional controller and a proportional controller with velocity 
 \setcounter{section}{2}
 \section{Experiment: Qualitative Trade-offs in Rise-time, Steady-State Error, Overshoot, and Settling Time for a Proportional Controller}
 % talk about measurement procedure
-In order to measure the peak overshoot (with respect to the final value) and steady state error, we measured the delta between the first peak and the steady state value using the peak finder tool for the peak and a cursor for the steady state value. The settling time measurement was performed by moving a cursor to the point at which the last oscillation was ending and the plot showed a straight line after. The time value shown on the cursor table was then taken as the settling time. The rise time was measured using a cursor as the time from 0 to the first instance of when the output reached the steady state value. We tried the "Bilevel Measurements" tool, but we found it to be inaccurate.
+In order to measure the peak overshoot (with respect to the final value) and steady state error, we measured the delta between the first peak and the steady state value using the peak finder tool for the peak and a cursor for the steady state value. The settling time measurement was performed by moving a cursor to the point at which the last oscillation was ending and the plot showed a straight line after. The time value shown on the cursor table was then taken as the settling time. The rise time was measured using a cursor as the time from 0 to the first instance of when the output reached the steady state value. We tried the "Bilevel Measurements" tool, but we found it to be inaccurate, though it did give us an approximation of where our values should be.
 
 \begin{table}[h!]
 \centering
@@ -53,7 +53,7 @@ In order to measure the peak overshoot (with respect to the final value) and ste
 \end{table}
 
 % observations or something here
-ok
+We measured values at a $k_p$ of 0.5, 1, 2, 3, 4, and 5. As we increased the gain, we observed that the peak overshoot percentage increased, the steady state error decreased the settling time increased, and the rise time decreased. This matches what we expected from our theoretical calculations in the pre-lab and from what we've observed in previous labs. % The settling time increases because the system is underdamped and as we increase $k_p$ the real part of the poles decrease (the poles approach the $j\omega$-axis), and the the constant $\tau_m$ is defined as $\frac{1}{Re(pole)}$ and for a moderately underdamped system, $T_s$ is $\approx 8\tau_m$.
 
 \section{Experiment: Proportional Controller Design}
 % calculations
@@ -86,7 +86,7 @@ To determine the values for $k_p$ that would meet the design specifications (pro
 \end{table}
 
 %observations go here
-
+Moving from our 1st to 2nd $k_p$, we observed some unusual behaviour where the steady state error increased and the settling time decreased, which is the opposite of what we expected to happen. We re-ran the test multiple times (in front of the TA as well) and still achieved the same results every time. Apart from this irregular result at a $k_p$ of 1.7685, the rest of the results followed the expected trend of peak overshoot increasing, steady state error decreasing and settling time increasing, as we increased our $k_p$.
 \setcounter{section}{5}
 \section{Joint Design of Proportional Controller and Velocity Feedback}
 There are two design requirements to consider. We know that the magnitude of the steady-state error can be given by the expression $\left| e_{ss} \right| = \frac{\tau_d}{k_p}$. If the steady-state error at $k_p = 1$ is 10 degrees, to reduce the steady-state by a factor of 5 (to 2 degrees), we need to increase $k_p$ by a factor of 5. Therefore the design requirement for the magnitude of the steady-state error can be met by any $k_p > 5$. 
