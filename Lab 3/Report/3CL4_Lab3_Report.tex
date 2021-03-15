@@ -53,7 +53,11 @@ In order to measure the peak overshoot (with respect to the final value) and ste
 \end{table}
 
 % observations or something here
-We measured values at a $k_p$ of 0.5, 1, 2, 3, 4, and 5. As we increased the gain, we observed that the peak overshoot percentage increased, the steady state error decreased the settling time increased, and the rise time decreased. This matches what we expected from our theoretical calculations in the pre-lab and from what we've observed in previous labs. % The settling time increases because the system is underdamped and as we increase $k_p$ the real part of the poles decrease (the poles approach the $j\omega$-axis), and the the constant $\tau_m$ is defined as $\frac{1}{Re(pole)}$ and for a moderately underdamped system, $T_s$ is $\approx 8\tau_m$.
+We measured values for the peak overshoot, steady-state error, settling time, and rise time at $k_p$ values of 0.5, 1, 2, 3, 4, and 5. The measurements are presented in Table \ref{table:exp1_measurements}. The figures for the step response plots are shown in Appendix \ref{appendix:exp1fig}. As we increased the proportional gain, we observed that the peak overshoot percentage increased, the steady state error decreased the settling time increased, and the rise time decreased. This matches our expectations from the theoretical calculations and investigations in the pre-lab and the behaviour that we have observed in previous labs. % The settling time increases because the system is underdamped and as we increase $k_p$ the real part of the poles decrease (the poles approach the $j\omega$-axis), and the the constant $\tau_m$ is defined as $\frac{1}{Re(pole)}$ and for a moderately underdamped system, $T_s$ is $\approx 8\tau_m$.
+
+% You should  plot the positions of the poles of the closed-loop transfer function from R(s) to Θ(s), for each of the chosen values of kp, and you should comment on how the transient  performance of the system can be predicted from these closed-loop pole positions. To assist you in plotting the closed-loop pole positions, observe that we can plot an x at the point a+jb in the s-plane using the Matlab command plot(a,b,’x’). If you wish to plot another point on the same figure, you should type hold on.Type help plot to see a list of possible symbols.
+
+% You should analyse the relationship between the predicted steady-state errors due to disturbances, and the measured errors.  You should comment on any discrepancies and relate them to observations that you have made in earlier labs.
 
 \section{Experiment: Proportional Controller Design}
 % calculations
@@ -71,6 +75,7 @@ To determine the values for $k_p$ that would meet the design specifications (pro
 \lstinputlisting[style=Matlab-editor, caption={Calculating $k_p$ to meet specifications}, label={listing:exp2_calc_kp}, lastline=6]{exp_calculations.m}
 
 % measurement procedure goes here
+The procedure for measuring the peak overshoot, steady-state error and settling time was identical to the procedure followed in the previous experiment. The peak overshoot and settling time were measured with no step disturbance ($\tau_d = 0$), while the steady-state error was measured with a step disturbance ($\tau_d = 0.1745$). The measurements are presented in Table \ref{table:exp2_measurements}. The figures for the step response plots are shown in Appendix \ref{appendix:exp2fig}.
 
 \begin{table}[h!]
 \centering
@@ -86,26 +91,45 @@ To determine the values for $k_p$ that would meet the design specifications (pro
 \end{table}
 
 %observations go here
-Moving from our 1st to 2nd $k_p$, we observed some unusual behaviour where the steady state error increased and the settling time decreased, which is the opposite of what we expected to happen. We re-ran the test multiple times (in front of the TA as well) and still achieved the same results every time. Apart from this irregular result at a $k_p$ of 1.7685, the rest of the results followed the expected trend of peak overshoot increasing, steady state error decreasing and settling time increasing, as we increased our $k_p$.
+Moving from our first value of $k_p$ to our second, we observed some unusual behaviour where the steady state error increased and the settling time decreased, which is the opposite of what we expected to happen. We re-ran the test multiple times and still achieved the same results every time. This behaviour can be seen in the figures for $k_p = 1.3314$ (Figure~\ref{fig:exp2_kp1.3314}) and $k_p = 1.7685$ (Figure~\ref{fig:exp2_kp1.7685}). Apart from this irregular result at a $k_p$ of 1.7685, the rest of the results followed the expected trend of peak overshoot increasing, steady state error decreasing and settling time increasing, as we increased our $k_p$.
+
+% explain why results are more accurate for higher overshoot
+We also observed that the theoretical values for the peak overshoot and the steady-state error were closer to the measured results for higher values of $k_p$ (and higher theoretical peak overshoot). We believe that the effects of the non-linearities in the system are more prevalent at lower values of $k_p$, which could cause these discrepancies to appear. The expressions used to derive the appropriate value of $k_p$ to meet the design requirements were also estimations for a moderately underdamped closed loop system. It is is likely that the estimations are more accurate for the higher values of overshoot that we had. 
+
 \setcounter{section}{5}
 \section{Joint Design of Proportional Controller and Velocity Feedback}
-There are two design requirements to consider. We know that the magnitude of the steady-state error can be given by the expression $\left| e_{ss} \right| = \frac{\tau_d}{k_p}$. If the steady-state error at $k_p = 1$ is 10 degrees, to reduce the steady-state by a factor of 5 (to 2 degrees), we need to increase $k_p$ by a factor of 5. Therefore the design requirement for the magnitude of the steady-state error can be met by any $k_p > 5$. 
-\begin{equation}
+There are two design requirements to consider. We know that the magnitude of the steady-state error can be given by the expression $\left| e_{ss} \right| = \frac{\tau_d}{k_p}$. If the steady-state error at $k_p = 1$ is 10 degrees, to reduce the steady-state by a factor of 5 (to 2 degrees), we need to increase $k_p$ by a factor of 5. Therefore the design requirement for the magnitude of the steady-state error can be met by any $k_p > 5$. We can also determine the $\zeta$ value of the system for the target percent overshoot of $10\%$, which is done in Equation~\ref{eq:calc_zeta}
+\begin{equation} \label{eq:calc_zeta}
     \zeta = -\frac{\ln\left(\frac{P.O.}{100}\right)}{\sqrt{\pi^2 + \ln^2\left(\frac{P.O.}{100}\right)}}
 \end{equation}
-rearrange expression for $\zeta$ and $k_v$
-\begin{equation}
+We can rearrange the expression relating $\zeta$, $k_p$, and $k_v$ to solve for $k_v$, and determine the minimum value of $k_v$ to meet the percent overshoot requirement. This is done in Equation~\ref{eq:calc_kv}
+\begin{equation} \label{eq:calc_kv}
 \begin{aligned}[b]
     \zeta &= \frac{1+k_vA}{2\sqrt{k_pA\tau_m}} \\
     k_v &= \frac{2\zeta\sqrt{k_pA\tau_m}-1}{A} 
 \end{aligned}
 \end{equation}
-
+The MATLAB code to determine the minimum values of $k_v$ for various acceptable $k_p$ is shown in Listing~\ref{listing:exp3_calc_kv}.
 \lstinputlisting[style=Matlab-editor, caption={Calculating $k_v$ to meet specifications}, label={listing:exp3_calc_kv}, firstline=8, firstnumber=8]{exp_calculations.m}
+
+The procedure for measuring the peak overshoot and steady-state error was identical to the procedure followed in the first experiment. The peak overshoot and steady-state time were measured with a step disturbance ($\tau_d = 0.1745$). The measurements are presented in Table \ref{table:exp3_measurements}. The figures for the step response plots are shown in Appendix \ref{appendix:exp3fig}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|} \hline
+    $k_p$ & 5 & 6 & 7 \\ \hline
+    $k_v$ & 0.1537 & 0.1718 & 0.1884 \\ \hline
+    peak overshoot (\%) & 11.70 & 11.33 & 8.25 \\ \hline
+    steady-state error (deg) & 2.11 & 1.76 & 1.41 \\ \hline
+\end{tabular}
+\caption{\label{table:exp3_measurements}Measurements for Experiment 3}
+\end{table}
+
+The results are close to what is expected, with values of peak overshoot and steady-state error near or within the design requirements. We can also observe a similar pattern to what has occurred in the previous experiments, where the expected peak overshoot and steady-state error are within the design requirements (expected from our design) for larger values of $k_p$, but slightly outside our expectations for lower values of $k_p$.
 
 \clearpage
 \appendix
-\section{Experiment 1 Figures} \label{sec:exp1fig}
+\section{Experiment 1 Figures} \label{appendix:exp1fig}
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.91\textwidth]{exp1_kp0.5}
@@ -138,16 +162,16 @@ rearrange expression for $\zeta$ and $k_v$
 \end{figure}
 
 \clearpage
-\section{Experiment 2 Figures} \label{sec:exp2fig}
+\section{Experiment 2 Figures} \label{appendix:exp2fig}
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.91\textwidth]{exp2_kp1.3314}
-    \caption{Experiment 2: $k_p = 1.3314$}
+    \caption{\label{fig:exp2_kp1.3314}Experiment 2: $k_p = 1.3314$}
 \end{figure}
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.91\textwidth]{exp2_kp1.7685}
-    \caption{Experiment 2: $k_p = 1.7685$}
+    \caption{\label{fig:exp2_kp1.7685}Experiment 2: $k_p = 1.7685$}
 \end{figure}
 \begin{figure}[h]
     \centering
@@ -158,5 +182,23 @@ rearrange expression for $\zeta$ and $k_v$
     \centering
     \includegraphics[width=0.91\textwidth]{exp2_kp3.3489}
     \caption{Experiment 2: $k_p = 3.3489$}
+\end{figure}
+
+\clearpage
+\section{Experiment 3 Figures} \label{appendix:exp3fig}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.91\textwidth]{exp3_kp5_kv0.1537}
+    \caption{Experiment 3: $k_p = 5$, $k_v = 0.1537$}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.91\textwidth]{exp3_kp6_kv0.1718}
+    \caption{Experiment 3: $k_p = 6$, $k_v = 0.1718$}
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.91\textwidth]{exp3_kp7_kv0.1884}
+    \caption{Experiment 3: $k_p = 7$, $k_v = 0.1884$}
 \end{figure}
 \end{document}
