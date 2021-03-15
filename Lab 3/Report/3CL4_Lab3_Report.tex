@@ -57,7 +57,8 @@ We measured values for the peak overshoot, steady-state error, settling time, an
 
 % You should  plot the positions of the poles of the closed-loop transfer function from R(s) to Θ(s), for each of the chosen values of kp, and you should comment on how the transient  performance of the system can be predicted from these closed-loop pole positions. To assist you in plotting the closed-loop pole positions, observe that we can plot an x at the point a+jb in the s-plane using the Matlab command plot(a,b,’x’). If you wish to plot another point on the same figure, you should type hold on.Type help plot to see a list of possible symbols.
 
-% You should analyse the relationship between the predicted steady-state errors due to disturbances, and the measured errors.  You should comment on any discrepancies and relate them to observations that you have made in earlier labs.
+% You should analyse the relationship between the predicted steady-state errors due to disturbances, and the measured errors. You should comment on any discrepancies and relate them to observations that you have made in earlier labs.
+From the pre-lab we get that $\left|e_{ss}\right| = \frac{\tau_d}{k_p}$. The theoretical values of $\left|e_{ss}\right|$ for $\tau_d = 0.1745$ and a $k_p$ of 0.5, 1, 2, 3, 4, and 5 are 20, 10, 5, 3.33, 2.5, and 2 degrees, respectively. As we can see, our measured steady-state error values from Table \ref{table:exp1_measurements} are very close to the theoretical values for a $k_p \geq 2$. For $k_p = 0.5$ & $k_p = 1$ there are pretty large discrepancies between the measured and theoretical values, but this is to be expected because from Lab 2, we observed non-linearities in the system's step response with small (0.5, 1) values of $k_p$.
 
 \section{Experiment: Proportional Controller Design}
 % calculations
