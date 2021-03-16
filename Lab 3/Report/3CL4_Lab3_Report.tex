@@ -152,6 +152,11 @@ The closed-loop positions of the system are shown in Figure~\ref{fig:exp3_pole}.
     \caption{\label{fig:exp3_pole}Closed-Loop Pole Positions}
 \end{figure}
 
+\section*{Comparison of Proportional Control and Proportional Control with Velocity Feedback}
+The system with no velocity feedback requires you to make trade-offs between the overshoot and rise time of the system, as both parameters are affected by changes in $k_p$. The addition of the velocity of feedback allows you to modify the system with more flexibility as you can adjust one parameter without requiring a trade-off in the other.
+ 
+The system with velocity feedback will also have poles that are further out, therefore it will decay much faster. This results in a system with less overshoot, faster rise time, and less settling time. 
+
 \clearpage
 \appendix
 \section{Experiment 1 Figures} \label{appendix:exp1fig}
