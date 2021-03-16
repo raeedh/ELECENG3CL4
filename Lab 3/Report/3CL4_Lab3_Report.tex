@@ -57,8 +57,16 @@ We measured values for the peak overshoot, steady-state error, settling time, an
 
 % You should  plot the positions of the poles of the closed-loop transfer function from R(s) to Θ(s), for each of the chosen values of kp, and you should comment on how the transient  performance of the system can be predicted from these closed-loop pole positions. To assist you in plotting the closed-loop pole positions, observe that we can plot an x at the point a+jb in the s-plane using the Matlab command plot(a,b,’x’). If you wish to plot another point on the same figure, you should type hold on.Type help plot to see a list of possible symbols.
 
+The closed-loop positions of the system are shown in Figure~\ref{fig:exp1_pole}. We can observe that the angle of the pole positions with the negative real axis increases as $k_p$ increases, resulting in a greater percentage overshoot. We expect the settling times of the system to increase as the time constant of the system should be decreasing based on the position of the poles. We can expect the rise time to decrease as $\omega_n$ increases, which is the dominant term in determining the rise time.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.94\textwidth]{exp1_pole}
+    \caption{\label{fig:exp1_pole}Closed-Loop Pole Positions}
+\end{figure}
+
 % You should analyse the relationship between the predicted steady-state errors due to disturbances, and the measured errors. You should comment on any discrepancies and relate them to observations that you have made in earlier labs.
-From the pre-lab we get that $\left|e_{ss}\right| = \frac{\tau_d}{k_p}$. The theoretical values of $\left|e_{ss}\right|$ for $\tau_d = 0.1745$ and a $k_p$ of 0.5, 1, 2, 3, 4, and 5 are 20, 10, 5, 3.33, 2.5, and 2 degrees, respectively. As we can see, our measured steady-state error values from Table \ref{table:exp1_measurements} are very close to the theoretical values for a $k_p \geq 2$. For $k_p = 0.5$ & $k_p = 1$ there are pretty large discrepancies between the measured and theoretical values, but this is to be expected because from Lab 2, we observed non-linearities in the system's step response with small (0.5, 1) values of $k_p$.
+From the pre-lab we get that $\left|e_{ss}\right| = \frac{\tau_d}{k_p}$. The theoretical values of $\left|e_{ss}\right|$ for $\tau_d = 0.1745$ and a $k_p$ of 0.5, 1, 2, 3, 4, and 5 are 20, 10, 5, 3.33, 2.5, and 2 degrees, respectively. As we can see, our measured steady-state error values from Table \ref{table:exp1_measurements} are very close to the theoretical values for a $k_p \geq 2$. For $k_p = 0.5$ and $k_p = 1$ there are pretty large discrepancies between the measured and theoretical values, but this is to be expected because from Lab 2, we observed non-linearities in the system's step response with small (0.5, 1) values of $k_p$.
 
 \section{Experiment: Proportional Controller Design}
 % calculations
@@ -95,7 +103,15 @@ The procedure for measuring the peak overshoot, steady-state error and settling 
 Moving from our first value of $k_p$ to our second, we observed some unusual behaviour where the steady state error increased and the settling time decreased, which is the opposite of what we expected to happen. We re-ran the test multiple times and still achieved the same results every time. This behaviour can be seen in the figures for $k_p = 1.3314$ (Figure~\ref{fig:exp2_kp1.3314}) and $k_p = 1.7685$ (Figure~\ref{fig:exp2_kp1.7685}). Apart from this irregular result at a $k_p$ of 1.7685, the rest of the results followed the expected trend of peak overshoot increasing, steady state error decreasing and settling time increasing, as we increased our $k_p$.
 
 % explain why results are more accurate for higher overshoot
-We also observed that the theoretical values for the peak overshoot and the steady-state error were closer to the measured results for higher values of $k_p$ (and higher theoretical peak overshoot). We believe that the effects of the non-linearities in the system are more prevalent at lower values of $k_p$, which could cause these discrepancies to appear. The expressions used to derive the appropriate value of $k_p$ to meet the design requirements were also estimations for a moderately underdamped closed loop system. It is is likely that the estimations are more accurate for the higher values of overshoot that we had. 
+We also observed that the theoretical values for the peak overshoot and the steady-state error were closer to the measured results for higher values of $k_p$ (and higher theoretical peak overshoot). We believe that the effects of the non-linearities in the system are more prevalent at lower values of $k_p$, which could cause these discrepancies to appear. The expressions used to derive the appropriate value of $k_p$ to meet the design requirements were also estimations for a moderately underdamped closed loop system. It is is likely that the estimations are more accurate for the higher values of overshoot that we had.
+
+The closed-loop positions of the system are shown in Figure~\ref{fig:exp2_pole}. We should expect the same behaviour as the previous experiment, which is largely what we measure in this experiment (except for the unexpected measured behaviour between $k_p = 1.3314$ and $k_p = 1.7685$).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.94\textwidth]{exp2_pole}
+    \caption{\label{fig:exp2_pole}Closed-Loop Pole Positions}
+\end{figure}
 
 \setcounter{section}{5}
 \section{Joint Design of Proportional Controller and Velocity Feedback}
@@ -127,6 +143,14 @@ The procedure for measuring the peak overshoot and steady-state error was identi
 \end{table}
 
 The results are close to what is expected, with values of peak overshoot and steady-state error near or within the design requirements. We can also observe a similar pattern to what has occurred in the previous experiments, where the expected peak overshoot and steady-state error are within the design requirements (expected from our design) for larger values of $k_p$, but slightly outside our expectations for lower values of $k_p$.
+
+The closed-loop positions of the system are shown in Figure~\ref{fig:exp3_pole}. Based on the pole positions, we should not expect a significant difference in the percent overshoot, as the poles all have the same angle with the negative real axis. Our experiments confirm this, as the percent overshoot for all three combinations of $k_p$ and $k_v$ are relatively similar.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.94\textwidth]{exp3_pole}
+    \caption{\label{fig:exp3_pole}Closed-Loop Pole Positions}
+\end{figure}
 
 \clearpage
 \appendix
