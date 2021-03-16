@@ -13,6 +13,12 @@
 \titleformat*{\section}{\large\bfseries}
 %\allowdisplaybreaks
 
+%
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+%
+
 \title{ELECENG 3CL4 Lab 3 Report}
 \author{
     Aaron Pinto \\
@@ -66,11 +72,11 @@ The closed-loop positions of the system are shown in Figure~\ref{fig:exp1_pole}.
 \end{figure}
 
 % You should analyse the relationship between the predicted steady-state errors due to disturbances, and the measured errors. You should comment on any discrepancies and relate them to observations that you have made in earlier labs.
-From the pre-lab we get that $\left|e_{ss}\right| = \frac{\tau_d}{k_p}$. The theoretical values of $\left|e_{ss}\right|$ for $\tau_d = 0.1745$ and a $k_p$ of 0.5, 1, 2, 3, 4, and 5 are 20, 10, 5, 3.33, 2.5, and 2 degrees, respectively. As we can see, our measured steady-state error values from Table \ref{table:exp1_measurements} are very close to the theoretical values for a $k_p \geq 2$. For $k_p = 0.5$ and $k_p = 1$ there are pretty large discrepancies between the measured and theoretical values, but this is to be expected because from Lab 2, we observed non-linearities in the system's step response with small (0.5, 1) values of $k_p$.
+From the pre-lab we get that $\left|e_{ss}\right| = \frac{\tau_d}{k_p}$. The theoretical values of $\left|e_{ss}\right|$ for $\tau_d = 0.1745$ and a $k_p$ of 0.5, 1, 2, 3, 4, and 5 are 20, 10, 5, 3.33, 2.5, and 2 degrees, respectively. As we can see, our measured steady-state error values from Table \ref{table:exp1_measurements} are very close to the theoretical values for a $k_p \geq 2$. For $k_p = 0.5$ and $k_p = 1$ there are pretty large discrepancies between the measured and theoretical values, but this is to be expected because from Lab 2, we observed the non-linear effects in the system's step response with small (0.5, 1) values of $k_p$.
 
 \section{Experiment: Proportional Controller Design}
 % calculations
-To determine the values for $k_p$ that would meet the design specifications (produce underdamped with maximum overshoot of 50\%, 55\%, 60\%, and 65\%), we used the expression from the lab document to estimate the percent overshoot of an underdamped system. The expression was rearranged to solve for $k_p$ in Equation~\ref{eq:calc_kp}. The calculations to determine the values that would meet the specifications were done in MATLAB, with the MATLAB code shown in Listing~\ref{listing:exp2_calc_kp}. The values of $A$ and $\tau_m$ were the average of their determined values from time-domain and frequency-domain analysis in lab 2.
+To determine the values for $k_p$ that would meet the design specifications (produce an underdamped response with maximum overshoot of 50\%, 55\%, 60\%, and 65\%), we used the expression from the lab document to estimate the percent overshoot of an underdamped system. The expression was rearranged to solve for $k_p$ in Equation~\ref{eq:calc_kp}. The calculations to determine the values that would meet the specifications were done in MATLAB, with the MATLAB code shown in Listing~\ref{listing:exp2_calc_kp}. The values of $A$ and $\tau_m$ were the average of their determined values from time-domain and frequency-domain analysis in lab 2.
 \begin{equation} \label{eq:calc_kp}
 \begin{aligned}[b]
     P.O. &= 100\exp\left( -\frac{\pi}{\sqrt{4k_pA\tau_m-1}} \right) \\
@@ -103,7 +109,7 @@ The procedure for measuring the peak overshoot, steady-state error and settling 
 Moving from our first value of $k_p$ to our second, we observed some unusual behaviour where the steady state error increased and the settling time decreased, which is the opposite of what we expected to happen. We re-ran the test multiple times and still achieved the same results every time. This behaviour can be seen in the figures for $k_p = 1.3314$ (Figure~\ref{fig:exp2_kp1.3314}) and $k_p = 1.7685$ (Figure~\ref{fig:exp2_kp1.7685}). Apart from this irregular result at a $k_p$ of 1.7685, the rest of the results followed the expected trend of peak overshoot increasing, steady state error decreasing and settling time increasing, as we increased our $k_p$.
 
 % explain why results are more accurate for higher overshoot
-We also observed that the theoretical values for the peak overshoot and the steady-state error were closer to the measured results for higher values of $k_p$ (and higher theoretical peak overshoot). We believe that the effects of the non-linearities in the system are more prevalent at lower values of $k_p$, which could cause these discrepancies to appear. The expressions used to derive the appropriate value of $k_p$ to meet the design requirements were also estimations for a moderately underdamped closed loop system. It is is likely that the estimations are more accurate for the higher values of overshoot that we had.
+We also observed that the theoretical values for the peak overshoot and the steady-state error were closer to the measured results for higher values of $k_p$ (and higher theoretical peak overshoot). We believe that the non-linear effects in the system are more prevalent at lower values of $k_p$, which could cause these discrepancies to appear. The expressions used to derive the appropriate value of $k_p$ to meet the design requirements were also estimations for a moderately underdamped closed loop system. It is is likely that the estimations are more accurate for the higher values of overshoot that we had.
 
 The closed-loop positions of the system are shown in Figure~\ref{fig:exp2_pole}. We should expect the same behaviour as the previous experiment, which is largely what we measure in this experiment (except for the unexpected measured behaviour between $k_p = 1.3314$ and $k_p = 1.7685$).
 
@@ -129,7 +135,7 @@ We can rearrange the expression relating $\zeta$, $k_p$, and $k_v$ to solve for 
 The MATLAB code to determine the minimum values of $k_v$ for various acceptable $k_p$ is shown in Listing~\ref{listing:exp3_calc_kv}.
 \lstinputlisting[style=Matlab-editor, caption={Calculating $k_v$ to meet specifications}, label={listing:exp3_calc_kv}, firstline=8, firstnumber=8]{exp_calculations.m}
 
-The procedure for measuring the peak overshoot and steady-state error was identical to the procedure followed in the first experiment. The peak overshoot and steady-state time were measured with a step disturbance ($\tau_d = 0.1745$). The measurements are presented in Table \ref{table:exp3_measurements}. The figures for the step response plots are shown in Appendix \ref{appendix:exp3fig}
+The procedure for measuring the peak overshoot and steady-state error was identical to the procedure followed in the first experiment. The peak overshoot and steady-state time were measured with a step disturbance ($\tau_d = 0.1745$). The measurements are presented in Table \ref{table:exp3_measurements}. The figures for the step response plots are shown in Appendix \ref{appendix:exp3fig}.
 
 \begin{table}[h!]
 \centering
@@ -226,7 +232,7 @@ The system with velocity feedback will also have poles that are further out, the
     \includegraphics[width=0.91\textwidth]{exp3_kp6_kv0.1718}
     \caption{Experiment 3: $k_p = 6$, $k_v = 0.1718$}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[t!]
     \centering
     \includegraphics[width=0.91\textwidth]{exp3_kp7_kv0.1884}
     \caption{Experiment 3: $k_p = 7$, $k_v = 0.1884$}
