@@ -47,7 +47,7 @@
     The angle of $G(s_0)$ is equal to the sum of the angle contributions of the two poles of $G(s)$ or $-\angle (s_0 - 0) - \angle (s_0 - (-3.2))$. For $s_0 = -6 + 15j$, we can calculate $\angle G(s_0) = -\angle (s_0 - 0) - \angle (s_0 - (-3.2)) = -111.80\degree - 100.57\degree = \angle G(s_0) = -212.37\degree$. We know from the phase condition that $\angle G(s_0) + \angle G_c(s_0) = 180\degree + l360\degree$, therefore the required angle contribution for the controller is equal to $\angle G_c(s_0) = 32.37\degree + l360\degree = \phi_c$. The phase lead compensator can help provide this required phase as it will provide us with a zero and a pole that we can adjust to meet the phase condition.
 
     \item % q4
-    To begin, we will place the zero of the phase lead compensator $z$ right under the desired dominant closed-loop pole $s_0$, therefore $z = -6$. With the zero placed, the required angle contribution from the pole $p$ becomes $\angle (s_0 + p) = \angle (s_0 + z) - \phi_c  = 90\degree - 32.37\degree + l360\degree = 57.63\degree + l360\degree$. The position of $p$ can be calculated to be $p = z - \omega \tan(\phi_c) = -15.51$. Therefore, the values of $z$ and $p$ are $z = -6$ and $p = -15.51$.
+    To begin, we will place the zero of the phase lead compensator $z$ right under the desired dominant closed-loop pole $s_0$, placing the zero at $-6$. With the zero placed, the required angle contribution from the pole $p$ becomes $\angle (s_0 + p) = \angle (s_0 + z) - \phi_c  = 90\degree - 32.37\degree + l360\degree = 57.63\degree + l360\degree$. The position of the pole can be calculated to be $z - \omega \tan(\phi_c) = -15.51$. Therefore, the values of $z$ and $p$ are $z = 6$ and $p = 15.51$.
 
     \item %q5
     The root locus of the system is shown in Figure~\ref{fig:q5_root_locus}. As we can see, the new root locus now places the desired closed-loop poles in the paths of the root locus.
@@ -81,7 +81,7 @@
         &= \frac{4.7 k_c (s + z)}{s(s + 3.2)(s + p) + 4.7 k_c (s + z)} \\
         &= \frac{4.7 k_c (s + z)}{s^3 + ps^2 + 3.2s^2 + 3.2 p s + 4.7 k_c s + 4.7 k_c z} \\
         &= \frac{4.7 k_c (s + z)}{s^3 + (3.2 + p)s^2 + (3.2 p + 4.7 k_c)s + 4.7 k_c z} \\
-        &= \frac{3.2787 (s - 6)}{s^3 - 12.31s^2 - 46.3533s - 19.6723} \\
+        &= \frac{3.2787 s + 19.67}{s^3 + 18.71s^2 + 52.91s + 19.67} \\
     \end{aligned}
     \end{equation*}
     The form of the transfer function is a third-order system with 1 zero and 3 poles. We expect some deviation from the design objectives because we are doing all of our calculations based on approximations for a second-order system with no zeros, while the system we are designing has an extra pole and zero. We did pick values for our dominant poles that put them in safer positions to account for the extra pole and zero, but there may still be some deviation.
