@@ -2,7 +2,7 @@
 G_s = tf(1, [1 3.2 0]);
 
 %% b)
-rlocus(G_s);
+% rlocus(G_s);
 
 %% c)
 z = 6;
@@ -13,21 +13,25 @@ Gc_s = tf([1 z], [1 p]);
 P_s = series(Gc_s, G_s);
 
 %% e)
-figure()
+% figure()
 rlocus(P_s);
-hold on;
+% hold on;
 
 %% f)
-k_c = 0.6976;
+k_c = 62;
 G_s = series(G_s, 4.7);
 Gc_s = series(Gc_s, k_c);
 scaled_P_s = series(G_s, Gc_s);
 
 %% g)
 T_s = feedback(scaled_P_s, 1)
+% rlocus(T_s)
+% hold off;
+step(T_s)
 
 %% h) & i)
 poles = pole(T_s)
+zeros = zero(T_s)
 
 %% j)
 
