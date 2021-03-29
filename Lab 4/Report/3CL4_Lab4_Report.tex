@@ -79,7 +79,7 @@ The unit ramp response is plotted using the MATLAB code shown in Listing~\ref{li
 	\caption{Responses of Closed-Loop Transfer Function $T(s)$}
 \end{figure}
 
-We can see from the step response in Figure~\ref{fig:step_response} that we are close to our desired design requirements. The percent overshoot is slightly less than 20\% at around 17\%, and the settling time is around the 0.5 sec requirement. The steady-state error for the unit ramp response in Figure~\ref{fig:unit_ramp_response} is around $0.05$, which matches the calculated steady-state error value for the unit ramp response (1 / velocity error constant = 0.508). 
+We can see from the step response in Figure~\ref{fig:step_response} that we are close to our desired design requirements. The percent overshoot is slightly less than 20\% at around 17\%, and the settling time is around the 0.5 sec requirement. The steady-state error for the unit ramp response in Figure~\ref{fig:unit_ramp_response} is around $0.05$, which matches the calculated steady-state error value for the unit ramp response (1 / velocity error constant = 0.0508). 
 
 As our design was done using approximations for a second-order system with no zeros, it is expected that there will be some discrepancies in the results as the system in use for the servomotor is a third-order system with one zero. However, we can see that the approximations still allow us to design a system that is close to meeting the design requirements. Such a system could be a good initial design that could later be adjusted to get closer to the design requirements.
 
@@ -94,7 +94,7 @@ The step response was checked with a square wave at the input. The measured peak
 	\caption{\label{fig:exp2_step}The Step Response of the Design in Simulation}
 \end{figure}
 
-The unit ramp response was checked with a triangular wave at the input. The measured steady state error was $7.94\degree$, or 0.1386 radians. This is much greater than the calculated 0.508 radians for the design. The unit ramp response in simulation can be seen in Figure~\ref{fig:exp2_unit_ramp}.
+The unit ramp response was checked with a triangular wave at the input. The measured steady state error was $7.94\degree$, or 0.1386 radians. This is much greater than the calculated 0.0508 radians for the design. The unit ramp response in simulation can be seen in Figure~\ref{fig:exp2_unit_ramp}.
 
 \begin{figure}[h!]
 	\centering
