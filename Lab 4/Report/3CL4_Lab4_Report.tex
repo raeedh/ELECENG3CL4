@@ -9,6 +9,7 @@
 \usepackage[framed, numbered]{matlab-prettifier}
 \lstset{inputpath=../}
 \usepackage{titlesec}
+\usepackage{gensymb}
 
 \titleformat*{\section}{\large\bfseries}
 %\allowdisplaybreaks
@@ -83,11 +84,27 @@ We can see from the step response in Figure~\ref{fig:step_response} that we are 
 As our design was done using approximations for a second-order system with no zeros, it is expected that there will be some discrepancies in the results as the system in use for the servomotor is a third-order system with one zero. However, we can see that the approximations still allow us to design a system that is close to meeting the design requirements. Such a system could be a good initial design that could later be adjusted to get closer to the design requirements.
 
 \section{Experiment with Phase Lead Compensator}
-The amplitude of the disturbance was set to 0. The numerator coefficients of the controller were $k_c$ for s term and $k_cz$ for the constant term, and for the denominator they were 1 for the s term and $p$ for the constant term. We entered them into the controller block in descending order of power.
+The design was simulated in MATLAB and Quanser with the servomotor model. The amplitude of the disturbance was set to 0. The numerator coefficients of the controller were $k_c$ $(1.8154)$ for s term and $k_cz$ $(1.8154 \cdot 8)$ for the constant term, and for the denominator they were 1 for the s term and $p$ $(20.7149)$ for the constant term. We entered them into the controller block in descending order of power.
 
-The measured peak overshoot and 2\% settling time were \_ and \_, respectively.
+The step response was checked with a square wave at the input. The measured peak overshoot and 2\% settling time were 5.08\% and approximately 0.3 seconds, respectively. These values are both below our target desired requirements and much further away than we were expecting from our design. The step response in simulation can be seen in Figure~\ref{fig:exp2_step}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{exp2_step_response}
+	\caption{\label{fig:exp2_step}The Step Response of the Design in Simulation}
+\end{figure}
+
+The unit ramp response was checked with a triangular wave at the input. The measured steady state error was $7.94\degree$, or 0.1386 radians. This is much greater than the calculated 0.508 radians for the design. The unit ramp response in simulation can be seen in Figure~\ref{fig:exp2_unit_ramp}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{exp2_unit_ramp_response}
+	\caption{\label{fig:exp2_unit_ramp}The Unit Ramp Response of the Design in Simulation}
+\end{figure}
 
 % exp2, reasons that contribute to the deviation (non-linearities, order of model)
-A potential source of the discrepancies could be the inherent non-linear effects of the simulation model. Also, all of our calculations were based on approximations for a second-order system with no zeros, while the system we designed has an extra pole and zero, so this causes some discrepancies as well. While we did pick values for our dominant poles that put them in safer positions (further left on the plane) to account for the extra pole and zero, there is still some deviation.
+Both the step response and unit response had significant deviation from the expected results. While our calculations were based on approximations for a second-order system with no zeros, the are significant differences between the step response (Figure~\ref{fig:step_response}) and unit ramp response (Figure~\ref{fig:unit_ramp_response}) from the design which was verified in Experiment 1, and the simulation model in this experiment.
+
+Potential source of the discrepancies could be the inherent non-linear effects of the simulation model, or model mismatch between the simulation model and the design model. It is also possible that the values of $A$ and $\tau_m$ calculated in Lab 2 are incorrect, causing discrepancies between our design model and the simulation model.
 
 \end{document}
