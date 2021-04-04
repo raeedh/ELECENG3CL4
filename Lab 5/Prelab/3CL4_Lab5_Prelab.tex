@@ -30,12 +30,56 @@
 
 \begin{enumerate}
 	\item %1
+	The output of the model can be expressed as:
+	\begin{multline} \label{eq:model}
+        Y(s) = \frac{G_c(s)G(s)}{1+H(s)G_c(s)G(s)}R(s) + \frac{G(s)}{1+H(s)G_c(s)G(s)}T_d(s) \\ + \frac{H(s)G_c(s)G(s)}{1+H(s)G_c(s)G(s)}N(s)
+    \end{multline}
+	
+	From Equation~\ref{eq:model}, we can derive $\frac{Y(s)}{T_d(s)}$ in Equation~\ref{eq:1} when $R(s) = 0$ and $H(s) = 1$.
+
+	\begin{equation} \label{eq:1}
+	\begin{aligned}[b]
+		Y(s) &= \frac{G(s)}{1+H(s)G_c(s)G(s)}T_d(s) \\
+		\frac{Y(s)}{T_d(s)} &= \frac{G(s)}{1+H(s)G_c(s)G(s)} \\
+		&= \frac{G(s)}{1+G_c(s)G(s)}
+	\end{aligned}
+	\end{equation}
 
 	\item %2
+	The steady-state value of the output with a step disturbance of size $A$ and the absence of any input can be derived through the final value theorem as:
+	\begin{equation} \label{eq:2}
+	\begin{aligned}[b]
+		e_{ss} &= \lim_{s \to 0} s \frac{G(s)}{1+G_c(s)G(s)} \frac{A}{s} \\
+		&= \lim_{s \to 0} \frac{AG(s)}{1+G_c(s)G(s)} \\
+		&= \lim_{s \to 0} \frac{A \frac{4.7}{s(s+3.2)}}{1 + G_c(s) \frac{4.7}{s(s+3.2)}} \\
+		&= \lim_{s \to 0} \frac{4.7 A}{s(s+3.2) + 4.7 G_c(s)} \\
+		&= 4.7 A \lim_{s \to 0} \frac{1}{s(s+3.2) + 4.7 G_c(s)} \\
+		&= 4.7 A \frac{1}{\lim_{s \to 0}\left( s(s+1) \right) + \lim_{s \to 0}(4.7G_c(s))} \\
+		&= 4.7 A \frac{1}{0 + 4.7 \lim_{s \to 0}\left(G_c(s)\right)} \\
+		&= \frac{4.7 A}{4.7 \lim_{s \to 0}\left(G_c(s)\right)} \\
+		&= \frac{A}{\lim_{s \to 0}G_c(s)}
+	\end{aligned}
+	\end{equation}
 	
 	\item %3
+	\begin{equation} \label{eq:3}
+	\begin{aligned}[b]
+		&= \frac{A}{\lim_{s \to 0}G_c(s)} \\
+		&= \frac{A}{\lim_{s \to 0} \left( K_c \frac{(s+z_{lead})}{(s+p_{lead})} \right)} \\
+		&= \frac{A}{K_c \left( \frac{z_{lead}}{p_{lead}} \right)} \\
+		&= \frac{A}{K_c} \left( \frac{p_{lead}}{z_{lead}} \right)
+	\end{aligned}
+	\end{equation}
 	
 	\item %4
+	\begin{equation} \label{eq:4}
+		\begin{aligned}[b]
+			&= \frac{A}{\lim_{s \to 0}G_c(s)} \\
+			&= \frac{A}{\lim_{s \to 0} \left( K_c \frac{(s+z_{lead})}{(s+p_{lead})} \frac{(s+z_{lag})}{(s+p_{lag})} \right)} \\
+			&= \frac{A}{K_c \left ( \frac{z_{lead}}{p_{lead}} \right) \left( \frac{z_{lag}}{p_{lag}} \right)} \\
+			&= \frac{A}{K_c} \left( \frac{p_{lead}}{z_{lead}} \right) \left( \frac{p_{lag}}{z_{lag}} \right)
+		\end{aligned}
+		\end{equation}
 	
 	\item %5
 	$K_c = 62.1$, $z_{lead} = 6$, $p_{lead} = 15.51$
