@@ -87,8 +87,17 @@
 	The parameters $K_c$, $z_{lead}$, and $p_{lead}$ were determined for a phase lead compensator in the pre-lab exercise of Lab 4 and were determined to be $K_c = 62.1$, $z_{lead} = 6$, and $p_{lead} = 15.51$.
 	
 	\item %6
-	
+	When the controller is used, the steady state value can be expressed as:
+	\begin{equation} \label{eq:6}
+	\begin{aligned}[b]
+		e_{ss} &= \frac{A}{K_c} \left( \frac{p_{lead}}{z_{lead}} \right) \left( \frac{p_{lag}}{z_{lag}} \right) \\
+		&= \frac{15.51 A}{62.1 \cdot 6} \left( \frac{p_{lag}}{z_{lag}} \right) \\
+		&= A \frac{15.51}{372.6} \left( \frac{p_{lag}}{z_{lag}} \right)
+	\end{aligned}
+	\end{equation}
+
 	\item %7
+	If we want to change the steady-state response due to a step disturbance from the response when just the lead compensator is used, we can change the values of $z_{lag}$ and $p_{lag}$. We can see in Equation~\ref{eq:6} that the steady-state value is multiplied by $\frac{p_{lag}}{z_{lag}}$ when the lag compensator is introduced, therefore to reduce the steady-state response by five times, we need $\frac{p_{lag}}{z_{lag}}$ to equal $0.2$, or $p_{lag} = 0.2 z_{lag}$.
 
 	\item %8
 	The positions of the closed-loop poles of the lead compensated loop in the pre-lab exercise for Lab 4 were closed-loop poles at $-6 + 15j$ and $-6 - 15j$.
