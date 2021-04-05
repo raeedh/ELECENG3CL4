@@ -114,3 +114,21 @@ input_vec=tvec;
 lsim(T_lead,input_vec,tvec)
 hold on
 lsim(T_leadlag,input_vec,tvec)
+
+%Draw the Bode diagrams
+figure
+bode(L_lead)
+hold on
+bode(L_leadlag)
+grid
+
+%Construct the closed-loop transfer function from disturbances to output
+disturbance_TF_lead = feedback(G,Gc_lead);
+disturbance_TF_leadlag=feedback(G,Gc_leadlag);
+
+%Calculate disturbance transfer functions
+figure
+step(disturbance_TF_lead,50);
+hold on
+step(disturbance_TF_leadlag,50);
+grid
