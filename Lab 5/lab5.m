@@ -1,4 +1,4 @@
-close all
+clear variables; clear global; close all;
 %% EXP1.1; DESIGN PHASE LEAD COMPENSATOR
 % AVERAGE TAU_M AND ALPHA VALUES FROM LAB 2
 tau_m = (0.133 + 0.155)/2;
