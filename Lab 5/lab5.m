@@ -81,7 +81,7 @@ L_lead=series(Gc_lead,G);
 L_leadlag=series(Gc_leadlag,G);
 
 %Draw the root locus plots
-figure(1)
+root_locus = figure(1);
 rlocus(L_lead)
 hold on
 rlocus(L_leadlag)
@@ -99,14 +99,20 @@ cl_poles_leadlag = pole(T_leadlag)
 plot(real(cl_poles_lead),imag(cl_poles_lead),'s');
 plot(real(cl_poles_leadlag),imag(cl_poles_leadlag),'^')
 
+root_locus.WindowState = 'maximized';
+exportgraphics(root_locus, 'Report/Figures/rlocus.png');
+
 %Calculate the step responses
-figure(2)
+step_response = figure(2);
 step(T_lead)
 hold on
 step(T_leadlag)
 
+step_response.WindowState = 'maximized';
+exportgraphics(step_response, 'Report/Figures/step_response.png');
+
 %Calculate the ramp responses
-figure(3)
+ramp_response = figure(3);
 [maxpole,index_maxpole]=max(real(cl_poles_leadlag));
 Tmax=4/abs(maxpole);
 tvec=0:0.01:Tmax;
@@ -115,20 +121,29 @@ lsim(T_lead,input_vec,tvec)
 hold on
 lsim(T_leadlag,input_vec,tvec)
 
+ramp_response.WindowState = 'maximized';
+exportgraphics(ramp_response, 'Report/Figures/ramp_response.png');
+
 %Draw the Bode diagrams
-figure
+bode_diagram = figure(4);
 bode(L_lead)
 hold on
 bode(L_leadlag)
 grid
+
+bode_diagram.WindowState = 'maximized';
+exportgraphics(bode_diagram, 'Report/Figures/bode.png');
 
 %Construct the closed-loop transfer function from disturbances to output
 disturbance_TF_lead = feedback(G,Gc_lead);
 disturbance_TF_leadlag=feedback(G,Gc_leadlag);
 
 %Calculate disturbance transfer functions
-figure
+dist_response = figure(5);
 step(disturbance_TF_lead,50);
 hold on
 step(disturbance_TF_leadlag,50);
 grid
+
+dist_response.WindowState = 'maximized';
+exportgraphics(dist_response, 'Report/Figures/dist_response.png');
