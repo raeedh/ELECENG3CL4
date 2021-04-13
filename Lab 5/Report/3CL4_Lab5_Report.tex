@@ -73,9 +73,11 @@ The addition of the lag compensator significantly reduces the steady state error
 
 \section{Experiment: Implementation of Your Lead-Lag Compensator}
 
-The step response of the system with the lead compensator is shown in Figure~\ref{fig:step_lead}, and the step response of the system with the lead-lag compensator is shown in Figure~\ref{fig:step_leadlag}
+The step response of the system with the lead compensator is shown in Figure~\ref{fig:step_lead}, and the step response of the system with the lead-lag compensator is shown in Figure~\ref{fig:step_leadlag}. The transient response does not change significantly, with the percent overshoot decreasing slightly (increases from about 4.7\% to 6.2\%) and the settling time remaining similar.
 
-The unit ramp response of the system with the lead compensator is shown in Figure~\ref{fig:ramp_lead}, and the unit ramp response of the system with the lead-lag compensator is shown in Figure~\ref{fig:ramp_leadlag}. For a unit ramp response, the steady state error is simply 1/kv, and when there if a scaling factor applied to the ramp response so that the slope increases or decreases the steady state error is equivalent to slope/kv. Because it's just a constant scaling factor, the ramp response of the system still converges to the steady state error. From the bode plot shown in Figure INCLUDE BODE PLOT, we can see that the magnitude increase at lower frequencies of the loead-lag compensator corresponds to its slightly lower ramp response steady state error, compared to the lead compensator.
+The response to a step disturbance with the lead compensator is shown in Figure~\ref{fig:dist_lead}, and the response a step disturbance with the lead-lag compensator is shown in Figure~\ref{fig:dist_leadlag}. The steady state error is significantly reduced, with the system with the lead compensator system having an error of 14.24 degrees, and the lead-lag compensator system having an error of 1.58 degrees, almost a reduction by a factor of 10. 
+
+The unit ramp response of the system with the lead compensator is shown in Figure~\ref{fig:ramp_lead}, and the unit ramp response of the system with the lead-lag compensator is shown in Figure~\ref{fig:ramp_leadlag}. For a unit ramp response, the steady state error is simply 1/$k_v$, and when there if a scaling factor applied to the ramp response so that the slope increases or decreases the steady state error is equivalent to slope/$k_v$. Because it's just a constant scaling factor, the ramp response of the system still converges to the steady state error. From the bode plot shown in Figure~\ref{fig:bode}, we can see that the magnitude increase at lower frequencies of the lead-lag compensator corresponds to its slightly lower ramp response steady state error, compared to the lead compensator.
 
 \begin{figure}[h!]
 	\centering
@@ -111,6 +113,12 @@ The unit ramp response of the system with the lead compensator is shown in Figur
     \centering
     \includegraphics[width=\textwidth]{ramp_leadlag}
     \caption{\label{fig:ramp_leadlag}Lead-Lag Compensator: Ramp Response}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{bode}
+    \caption{\label{fig:bode}Bode Plot}
 \end{figure}
 
 \end{document}
